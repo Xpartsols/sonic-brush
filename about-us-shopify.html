@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sonic Brush® — Our Story</title>
+  
+  <!-- Premium Typography (Outfit & Tenor Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Tenor+Sans&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind configuration with Brand guidelines -->
+  <script>
+    tailwind.config = {
+      corePlugins: {
+        preflight: false,
+      },
+      theme: {
+        extend: {
+          colors: {
+            'sb-blue': '#0344a4',
+            'sb-blue-deep': '#022d6e',
+            'sb-blue-soft': '#e8eff9',
+            'sb-blue-wash': '#f4f7fa',
+            'sb-ink': '#0a1428',
+            'sb-ink-muted': '#4a5568',
+            'sb-line': '#e5eaf3',
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            serif: ['Tenor Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --sb-blue: #0344a4;
+      --sb-blue-deep: #022d6e;
+      --sb-blue-soft: #e8eff9;
+      --sb-blue-wash: #f4f7fa;
+      --sb-ink: #0a1428;
+      --sb-ink-muted: #4a5568;
+      --sb-line: #e5eaf3;
+    }
+
+
+
+    /* Scoped Preflight Resets to prevent Shopify theme styles from bleeding in */
+    #sonic-brush-story-page * {
+      box-sizing: border-box;
+    }
+
+    #sonic-brush-story-page img,
+    #sonic-brush-story-page video {
+      display: block;
+      max-width: 100%;
+    }
+
+    #sonic-brush-story-page ul,
+    #sonic-brush-story-page ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #sonic-brush-story-page h1,
+    #sonic-brush-story-page h2,
+    #sonic-brush-story-page h3,
+    #sonic-brush-story-page h4,
+    #sonic-brush-story-page h5,
+    #sonic-brush-story-page h6,
+    #sonic-brush-story-page p {
+      margin: 0;
+    }
+
+    #sonic-brush-story-page blockquote {
+      margin: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      color: var(--sb-ink);
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Stand-out Section Titles */
+    .section-title {
+      font-family: 'Tenor Sans', sans-serif;
+      font-weight: 400;
+      font-size: clamp(38px, 4.5vw, 54px);
+      letter-spacing: -0.015em;
+      line-height: 1.12;
+      color: var(--sb-ink);
+    }
+
+    /* Paragraph Styling */
+    .sb-paragraph {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--sb-ink-muted);
+    }
+
+    /* Premium Eyebrow Label */
+    .eyebrow {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sb-blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      line-height: 1;
+    }
+    .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 28px;
+      height: 2px;
+      background-color: currentColor;
+    }
+    /* Light variant for dark backgrounds */
+    .eyebrow--light {
+      color: var(--sb-blue-soft);
+    }
+
+    /* High-Contrast Hero CTA button */
+    .btn-hero {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 34px;
+      background-color: #ffffff !important;
+      color: var(--sb-blue-deep) !important;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid #ffffff !important;
+      border-radius: 0;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(2, 45, 110, 0.15);
+    }
+    .btn-hero:hover {
+      background-color: var(--sb-blue-soft) !important;
+      border-color: var(--sb-blue-soft) !important;
+      color: var(--sb-blue-deep) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(2, 45, 110, 0.25);
+    }
+
+    /* Sharp Primary CTA Button */
+    .btn-sb-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background-color: var(--sb-blue-deep);
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--sb-blue-deep);
+      border-radius: 0;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+    .btn-sb-primary:hover {
+      background-color: var(--sb-blue);
+      border-color: var(--sb-blue);
+      transform: translateY(-1px);
+    }
+
+    /* Scroll Reveal Transition */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-item {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .sb-fade-up {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    /* Initial Load Glide-Up for Hero Card */
+    @keyframes sb-fade-up {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .sb-fade-up {
+      animation: sb-fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    /* Native CSS Scroll-driven Hero Parallax */
+    @supports (animation-timeline: scroll()) {
+      #hero-parallax-wrapper {
+        animation: hero-parallax linear both;
+        animation-timeline: scroll();
+        animation-range: 0px 60vh;
+      }
+    }
+    @keyframes hero-parallax {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(60px);
+      }
+    }
+
+    @keyframes sb-scroll-line {
+      0% { transform: translateY(-100%); }
+      80%, 100% { transform: translateY(350%); }
+    }
+    .animate-scroll-line {
+      animation: sb-scroll-line 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+
+    /* Staggered animation delays */
+    .reveal-delay-100 {
+      transition-delay: 100ms;
+    }
+    .reveal-delay-200 {
+      transition-delay: 200ms;
+    }
+
+
+
+    /* Floating badges animation */
+    @keyframes sb-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .animate-float {
+      animation: sb-float 4.5s ease-in-out infinite;
+    }
+
+
+
+    /* Ambient backdrop glow pulse */
+    @keyframes sb-ambient-pulse {
+      0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.15; }
+      50% { transform: scale(1.15) translate(15px, -15px); opacity: 0.22; }
+    }
+    .animate-ambient-pulse {
+      animation: sb-ambient-pulse 10s ease-in-out infinite;
+    }
+
+    /* Vertical Divider grow animation */
+    .reveal-divider {
+      transform: scaleY(0);
+      transform-origin: center;
+      transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-divider.is-visible {
+      transform: scaleY(1);
+    }
+
+    /* Pulsating Hotspot Pins */
+    .sb-hotspot {
+      position: absolute;
+      z-index: 30;
+      cursor: pointer;
+    }
+    .sb-hotspot:hover {
+      z-index: 40;
+    }
+    .sb-hotspot-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background-color: var(--sb-blue);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(3, 68, 164, 0.6);
+      animation: sb-pulse 2s infinite;
+      transition: transform 0.2s ease;
+    }
+    .sb-hotspot:hover .sb-hotspot-trigger {
+      transform: scale(1.15);
+      background-color: var(--sb-blue-deep);
+    }
+    @keyframes sb-pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(3, 68, 164, 0.6);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(3, 68, 164, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(3, 68, 164, 0);
+      }
+    }
+
+    /* Sleek Frosted Tooltips */
+    .sb-hotspot-tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) translateY(6px);
+      opacity: 0;
+      visibility: hidden;
+      width: 190px;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--sb-line);
+      padding: 10px 12px;
+      border-radius: 2px;
+      box-shadow: 0 10px 24px -6px rgba(2, 45, 110, 0.15);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+    /* Show tooltip on hover */
+    .sb-hotspot:hover .sb-hotspot-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+    .sb-hotspot-tooltip h4 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--sb-blue);
+      font-weight: 700;
+      margin: 0 0 3px 0;
+    }
+    .sb-hotspot-tooltip p {
+      font-size: 12px;
+      line-height: 1.4;
+      color: var(--sb-ink);
+      margin: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-item {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .sb-fade-up {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .sb-hotspot-trigger {
+        animation: none !important;
+      }
+
+      .animate-float {
+        animation: none !important;
+      }
+      .animate-scroll-line {
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shopify Page Container (exclude header/footer blocks from Shopify) -->
+  <main id="sonic-brush-story-page" class="overflow-x-hidden">
+
+    <!-- ── HERO SECTION ── -->
+    <section class="relative bg-white border-b border-sb-line/35 py-8 lg:py-0 overflow-hidden flex items-center min-h-[500px] lg:h-[75vh]">
+      <!-- Sweeping Blue Gradient Wave Backdrop -->
+      <div class="absolute bottom-0 right-0 w-full lg:w-[50%] h-[50%] lg:h-full z-0 overflow-hidden pointer-events-none select-none">
+        <!-- Light Blue Backdrop Shape (peeking out) -->
+        <div class="absolute bottom-0 right-0 w-[85%] h-[90%] bg-sb-blue rounded-t-[80px] lg:rounded-t-none lg:rounded-tl-[320px] opacity-90"></div>
+        <!-- Dark Blue Backdrop Shape (on top) -->
+        <div class="absolute bottom-0 left-0 w-[85%] h-full bg-gradient-to-t from-sb-blue-deep via-sb-blue-deep to-sb-blue rounded-t-[100px] lg:rounded-t-none lg:rounded-tl-[320px]"></div>
+      </div>
+
+      <div class="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 w-full">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          <!-- Left Column: Copy & Actions -->
+          <div class="flex items-center justify-center lg:justify-start text-center lg:text-left sb-fade-up">
+            <div class="max-w-[560px]">
+              <span class="text-sb-blue font-semibold uppercase tracking-[0.25em] text-[12px] sm:text-[13px] inline-flex items-center gap-2">
+                <span class="w-6 h-px bg-sb-blue"></span>
+                Our Story
+              </span>
+              <h1 class="mt-5 font-serif text-[42px] sm:text-[54px] lg:text-[62px] leading-[1.1] text-sb-ink font-bold">
+                The Toothbrush Hasn't Changed in <span class="text-sb-blue italic font-light">Decades.</span>
+              </h1>
+              <p class="mt-6 text-[16px] sm:text-[17px] leading-[1.8] text-sb-ink-muted">
+                We decided it was time. Sonic Brush® is a fully automatic oral care system that cleans all 32 teeth at once — delivering a complete, professional clean in a structured 30-second cycle.
+              </p>
+              <div class="mt-8 flex flex-col items-center lg:items-start gap-6">
+                <a href="#mission" class="btn-sb-primary inline-flex items-center gap-2">
+                  Read Our Story
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+                </a>
+                
+                <!-- Scroll Indicator (placed inline under button to avoid absolute collisions) -->
+                <div class="hidden lg:flex flex-col items-center pointer-events-none select-none">
+                  <span class="text-[9.5px] tracking-[0.22em] text-sb-ink/65 uppercase font-semibold">Scroll to explore</span>
+                  <div class="w-px h-12 bg-sb-blue-deep/20 relative overflow-hidden mt-3">
+                    <div class="w-full h-4 bg-sb-blue absolute top-0 left-0 animate-scroll-line"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right Column: Visual Stacks (Sweeping Wave & Leaf Shape Crop) -->
+          <div class="relative p-4 reveal-item reveal-delay-100 w-full flex justify-center items-center min-h-[420px] lg:h-[65vh] select-none">
+            
+            <!-- Parallax Wrapper Div (translates the whole leaf frame) -->
+            <div id="hero-parallax-wrapper" class="relative z-10 flex items-center justify-center" style="will-change: transform;">
+              <!-- Leaf Shape Frame Container -->
+              <div class="relative w-[280px] h-[320px] sm:w-[340px] sm:h-[390px] lg:w-[400px] lg:h-[460px] flex items-center justify-center">
+                <!-- Offset outline frame backing -->
+                <div class="absolute -inset-3 border-2 border-white/60 rounded-tl-[140px] sm:rounded-tl-[170px] lg:rounded-tl-[200px] rounded-br-[140px] sm:rounded-br-[170px] lg:rounded-br-[200px] rounded-tr-[8px] rounded-bl-[8px] -z-10"></div>
+                
+                <!-- Main Image Container -->
+                <div class="w-full h-full border-[8px] sm:border-[10px] border-white shadow-2xl rounded-tl-[140px] sm:rounded-tl-[170px] lg:rounded-tl-[200px] rounded-br-[140px] sm:rounded-br-[170px] lg:rounded-br-[200px] rounded-tr-[8px] rounded-bl-[8px] bg-sb-blue-deep overflow-hidden">
+                  <img
+                    src="assets/story/hero-01.png"
+                    alt="Woman using Sonic Brush U-shaped toothbrush"
+                    class="w-full h-full object-cover object-[75%_40%] transition-transform duration-700 ease-out hover:scale-105"
+                    fetchpriority="high"
+                  />
+                </div>
+              </div>
+            </div>
+            
+            <!-- Floating Capsule Badge -->
+            <div class="absolute left-0 sm:left-4 bottom-[8%] sm:bottom-[10%] z-20 flex items-center gap-3 bg-white/95 backdrop-blur-md shadow-xl border border-sb-line p-3 rounded-full animate-float" style="animation-duration: 6.2s;">
+              <div class="w-8 h-8 rounded-full bg-sb-blue flex items-center justify-center text-white text-[12px] font-bold">✓</div>
+              <div class="pr-3">
+                <span class="block text-[14px] font-bold text-sb-ink leading-tight">30s Clean</span>
+                <span class="block text-[9px] uppercase tracking-wider text-sb-ink-muted leading-none font-semibold">360° Coverage</span>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+
+      </div>
+    </section>
+
+
+
+
+    <!-- ── PROOF STRIP — highlight blocks ── -->
+    <!-- ── PROOF STRIP — highlight blocks ── -->
+    <section class="bg-sb-blue-deep py-8 sm:py-10 lg:py-0 relative overflow-hidden flex items-center lg:h-[25vh]">
+      <!-- Decorative background glow -->
+      <div class="absolute -top-40 -left-40 w-96 h-96 bg-sb-blue/15 rounded-full filter blur-[80px] pointer-events-none animate-ambient-pulse" aria-hidden="true"></div>
+      <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-sb-blue/15 rounded-full filter blur-[80px] pointer-events-none animate-ambient-pulse" style="animation-delay: -3.5s; animation-duration: 13s;" aria-hidden="true"></div>
+
+      <div class="grid grid-cols-3 md:grid-cols-[1fr_auto_1fr_auto_1fr] items-center gap-4 sm:gap-6 lg:gap-10 max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-12 w-full">
+        
+        <!-- Stat Block 1 -->
+        <div class="relative flex flex-col items-center text-center py-4 sm:py-6 reveal-item reveal-delay-100 group transition-transform duration-300 hover:-translate-y-1">
+          <div class="w-8 h-[2px] bg-sb-blue-soft/50 group-hover:bg-white transition-colors duration-300 mb-4 sm:mb-6"></div>
+          <div class="font-serif text-[42px] sm:text-[64px] lg:text-[80px] leading-none text-white select-none transition-transform duration-500 group-hover:scale-105 count-up-stat" data-target="30" data-suffix="s" style="text-shadow: 0 0 35px rgba(255,255,255,0.08);">0s</div>
+          <div class="mt-3 sm:mt-4 text-[8.5px] sm:text-[10px] uppercase tracking-[0.2em] text-white/85 group-hover:text-white transition-colors duration-300 font-semibold">Full clean cycle</div>
+          <p class="hidden sm:block mt-2 text-[10px] sm:text-[12px] text-white/60 group-hover:text-white/80 transition-colors duration-300 leading-snug max-w-[160px]">Every tooth, every time</p>
+        </div>
+
+        <!-- Vertical Divider 1 -->
+        <div class="hidden md:flex items-center justify-center py-2 select-none pointer-events-none reveal-item reveal-divider reveal-delay-150" aria-hidden="true">
+          <div class="w-px h-16 bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+        </div>
+
+        <!-- Stat Block 2 -->
+        <div class="relative flex flex-col items-center text-center py-4 sm:py-6 reveal-item reveal-delay-200 group transition-transform duration-300 hover:-translate-y-1">
+          <div class="w-8 h-[2px] bg-sb-blue-soft/50 group-hover:bg-white transition-colors duration-300 mb-4 sm:mb-6"></div>
+          <div class="font-serif text-[42px] sm:text-[64px] lg:text-[80px] leading-none text-white select-none transition-transform duration-500 group-hover:scale-105 count-up-stat" data-target="360" data-suffix="°" style="text-shadow: 0 0 35px rgba(255,255,255,0.08);">0°</div>
+          <div class="mt-3 sm:mt-4 text-[8.5px] sm:text-[10px] uppercase tracking-[0.2em] text-white/85 group-hover:text-white transition-colors duration-300 font-semibold">All teeth at once</div>
+          <p class="hidden sm:block mt-2 text-[10px] sm:text-[12px] text-white/60 group-hover:text-white/80 transition-colors duration-300 leading-snug max-w-[160px]">Simultaneous coverage</p>
+        </div>
+
+        <!-- Vertical Divider 2 -->
+        <div class="hidden md:flex items-center justify-center py-2 select-none pointer-events-none reveal-item reveal-divider reveal-delay-250" aria-hidden="true">
+          <div class="w-px h-16 bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
+        </div>
+
+        <!-- Stat Block 3 -->
+        <div class="relative flex flex-col items-center text-center py-4 sm:py-6 reveal-item reveal-delay-300 group transition-transform duration-300 hover:-translate-y-1">
+          <div class="w-8 h-[2px] bg-sb-blue-soft/50 group-hover:bg-white transition-colors duration-300 mb-4 sm:mb-6"></div>
+          <div class="font-serif text-[42px] sm:text-[64px] lg:text-[80px] leading-none text-white select-none transition-transform duration-500 group-hover:scale-105 count-up-stat" data-start="10" data-target="0" style="text-shadow: 0 0 35px rgba(255,255,255,0.08);">10</div>
+          <div class="mt-3 sm:mt-4 text-[8.5px] sm:text-[10px] uppercase tracking-[0.2em] text-white/85 group-hover:text-white transition-colors duration-300 font-semibold">Technique required</div>
+          <p class="hidden sm:block mt-2 text-[10px] sm:text-[12px] text-white/60 group-hover:text-white/80 transition-colors duration-300 leading-snug max-w-[160px]">Just press and brush</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ── 01 — OUR MISSION ── -->
+    <section id="mission" class="bg-white py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      <div class="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <!-- Text — Left -->
+          <div class="flex items-center reveal-item">
+            <div class="w-full">
+              <span class="eyebrow">Our Mission</span>
+              <h2 class="section-title mt-5">
+                Most people don't brush <span class="italic text-sb-blue">perfectly.</span>
+              </h2>
+              <div class="mt-6 space-y-4">
+                <p class="sb-paragraph">
+                  For decades, brushing your teeth has relied on the same basic process:
+                  manual strokes that depend on technique, timing, and consistency. But
+                  the reality is simple — most people don't brush perfectly. Uneven
+                  coverage, missed spots, and rushing through the two-minute mark are
+                  the norm.
+                </p>
+                <p class="sb-paragraph">
+                  Over years, those small inconsistencies add up. We asked ourselves a
+                  question that changed everything:
+                </p>
+                <blockquote class="border-l-2 border-sb-blue pl-5 font-serif italic text-[20px] sm:text-[23px] leading-[1.35] text-sb-ink">
+                  "What if brushing could be smarter, simpler, and more consistent?"
+                </blockquote>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Image — Right -->
+          <!-- REPLACE src value with Shopify CDN image link (11 (4).png) -->
+          <div class="relative p-4 reveal-item reveal-delay-100">
+            <!-- Abstract Accent Panel (Leaf Outline and Soft Circle Backdrop) -->
+            <div class="absolute -inset-1 border-2 border-sb-blue/15 rounded-[12px] -z-10 translate-x-3 translate-y-3" aria-hidden="true"></div>
+            <div class="absolute -bottom-6 -left-6 w-36 h-36 bg-sb-blue-soft/80 rounded-full -z-10 filter blur-[8px] pointer-events-none" aria-hidden="true"></div>
+            <!-- Image Container -->
+            <div class="relative w-full h-[280px] sm:h-[400px] lg:h-[480px] overflow-hidden group rounded-[12px] border border-sb-line/30 shadow-md bg-white">
+              <img src="assets/story/lifestyle-01-smiling.png" alt="Woman holding Sonic Brush U-shaped device, smiling" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+            </div>
+            <!-- Floating Badge Card -->
+            <div class="absolute bottom-1 left-1 z-20 inline-flex bg-white/95 backdrop-blur-md shadow-[0_24px_60px_-18px_rgba(3,68,164,0.45)] ring-1 ring-sb-ink/5 max-w-[264px] animate-float">
+              <div class="w-[3px] bg-sb-blue flex-shrink-0" aria-hidden="true"></div>
+              <div class="flex-1 px-5 py-4">
+                <div class="flex flex-col gap-[3px] mb-3.5" aria-hidden="true">
+                  <span class="block h-[2px] w-10 bg-sb-blue"></span>
+                  <span class="block h-[2px] w-6 bg-sb-blue ml-1.5"></span>
+                  <span class="block h-[2px] w-3 bg-sb-blue ml-3"></span>
+                </div>
+                <p class="text-[14px] font-semibold text-sb-ink leading-[1.3] tracking-[-0.005em]">Brushing cycle complete</p>
+                <div class="mt-3 w-6 h-px bg-sb-blue/50"></div>
+                <p class="mt-2 text-[9.5px] uppercase tracking-[0.22em] text-sb-ink-muted font-medium">30 seconds · All teeth covered</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 02 — A NEW WAY TO BRUSH ── -->
+    <section class="bg-sb-blue-wash py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      <div class="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <!-- Image — Left (on desktop: left; on mobile: bottom) -->
+          <!-- REPLACE src value with Shopify CDN image link (SB2.png) -->
+          <div class="relative order-2 lg:order-1 p-4 reveal-item">
+            <!-- Abstract Square Outline Backing (With Curved Backdrop Blob) -->
+            <div class="absolute inset-0 border-2 border-sb-blue/15 rounded-[2px] translate-x-3 translate-y-3" aria-hidden="true"></div>
+            <div class="absolute -top-8 -right-8 w-40 h-40 bg-sb-blue-soft/75 rounded-full -z-10 filter blur-[8px] pointer-events-none" aria-hidden="true"></div>
+            <!-- Image Container -->
+            <div class="relative w-full h-[280px] sm:h-[400px] lg:h-[480px] overflow-hidden group rounded-[2px] border border-sb-line/30 shadow-md bg-white">
+              <img src="assets/story/product-white.jpg" alt="Sonic Brush U-shaped toothbrush" class="w-full h-full object-contain p-8 transition-transform duration-700 ease-out group-hover:scale-105" />
+              
+              <!-- Hotspot 1: Mouthpiece -->
+              <div class="sb-hotspot top-[45%] left-[50%]" style="transform: translate(-50%, -50%);">
+                <div class="sb-hotspot-trigger">+</div>
+                <div class="sb-hotspot-tooltip">
+                  <h4>U-Mouthpiece</h4>
+                  <p>Dental-grade U-shaped brush cleans all 32 teeth at once.</p>
+                </div>
+              </div>
+
+              <!-- Hotspot 2: Silicone Bristles -->
+              <div class="sb-hotspot top-[30%] left-[38%]" style="transform: translate(-50%, -50%);">
+                <div class="sb-hotspot-trigger">+</div>
+                <div class="sb-hotspot-tooltip">
+                  <h4>Silicone Bristles</h4>
+                  <p>Super soft antimicrobial bristles protect sensitive gums.</p>
+                </div>
+              </div>
+
+              <!-- Hotspot 3: Dual Engine Base -->
+              <div class="sb-hotspot top-[70%] left-[50%]" style="transform: translate(-50%, -50%);">
+                <div class="sb-hotspot-trigger">+</div>
+                <div class="sb-hotspot-tooltip">
+                  <h4>Sonic V5 Motor</h4>
+                  <p>Calibrates micro-vibrations for deep plaque removal.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Text — Right -->
+          <div class="flex items-center order-1 lg:order-2 reveal-item reveal-delay-100">
+            <div class="w-full">
+              <span class="eyebrow">A New Way to Brush</span>
+              <h2 class="section-title mt-5">
+                So we built <span class="italic text-sb-blue">something better.</span>
+              </h2>
+              <div class="mt-6 space-y-4">
+                <p class="sb-paragraph">
+                  Instead of refining the traditional toothbrush, we rethought brushing
+                  entirely. Sonic Brush® introduced a fully automatic system that cleans
+                  all your teeth at once — in a structured 30-second cycle.
+                </p>
+                <p class="text-[16px] sm:text-[17px] leading-[1.8] font-medium text-sb-ink">
+                  No technique. No guesswork. No missed spots.
+                </p>
+                <p class="sb-paragraph">
+                  By standardising motion and timing, Sonic Brush® turns brushing from a
+                  technique-dependent task into a simple, highly effective daily ritual.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── PRODUCT DEMO VIDEO (SPLIT GRID) ── -->
+    <section class="bg-white py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      <div class="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <!-- Left Column — Text -->
+          <div class="reveal-item">
+            <span class="eyebrow">Product Demo</span>
+            <h2 class="section-title mt-5">See how it works.</h2>
+            <div class="mt-6 space-y-4">
+              <p class="sb-paragraph">
+                Watch how the U-shaped mouthpiece and sonic vibration technology deliver 
+                consistent, simultaneous coverage to every tooth in 30 seconds.
+              </p>
+              <p class="sb-paragraph">
+                Our advanced V5 motor calibrates soft vibrations throughout the dental-grade 
+                silicone bristles, removing plaque effectively without harsh abrasion on sensitive gums.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Column — Video -->
+          <!-- REPLACE src value with Shopify CDN Video link (subtitled video) -->
+          <div class="relative p-4 reveal-item reveal-delay-100">
+            <!-- Abstract Frame Backing -->
+            <div class="absolute inset-0 border border-sb-blue/15 rounded-[2px] translate-x-3 translate-y-3" aria-hidden="true"></div>
+            <!-- Video Container -->
+            <div class="relative w-full aspect-video border border-sb-line shadow-xl rounded-[2px] overflow-hidden bg-white">
+              <video
+                class="w-full h-full object-cover"
+                src="assets/videos/product-demo.mp4"
+                autoplay
+                loop
+                muted
+                playsinline
+                controls
+              ></video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 03 — BUILT FOR MODERN LIFE ── -->
+    <section class="bg-sb-blue-wash py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      <div class="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <!-- Image — Left -->
+          <!-- REPLACE src value with Shopify CDN image link (EXPERI_1.PNG) -->
+          <div class="relative order-2 lg:order-1 p-4 reveal-item">
+            <!-- Abstract Outline Frame Backing (Mirrored Leaf Shape) -->
+            <div class="absolute -inset-2 border-2 border-sb-blue/15 rounded-[12px] -z-10 -translate-x-3 translate-y-3" aria-hidden="true"></div>
+            <div class="absolute -bottom-6 -right-6 w-36 h-36 bg-sb-blue-soft/80 rounded-full -z-10 filter blur-[8px] pointer-events-none" aria-hidden="true"></div>
+            <!-- Image Container (Mirrored Leaf Shape) -->
+            <div class="relative w-full h-[280px] sm:h-[400px] lg:h-[480px] overflow-hidden group rounded-[12px] border border-sb-line/30 shadow-md bg-white">
+              <img src="assets/story/spare-bluebg-inuse.png" alt="Woman using Sonic Brush against blue background" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+            </div>
+            <!-- Floating Badge Card -->
+            <div class="absolute bottom-1 right-1 z-20 inline-flex bg-white/95 backdrop-blur-md shadow-[0_24px_60px_-18px_rgba(3,68,164,0.45)] ring-1 ring-sb-ink/5 max-w-[264px] animate-float">
+              <div class="w-[3px] bg-sb-blue flex-shrink-0" aria-hidden="true"></div>
+              <div class="flex-1 px-5 py-4">
+                <div class="flex flex-col gap-[3px] mb-3.5" aria-hidden="true">
+                  <span class="block h-[2px] w-10 bg-sb-blue"></span>
+                  <span class="block h-[2px] w-6 bg-sb-blue ml-1.5"></span>
+                  <span class="block h-[2px] w-3 bg-sb-blue ml-3"></span>
+                </div>
+                <p class="text-[14px] font-semibold text-sb-ink leading-[1.3] tracking-[-0.005em]">24+ hours saved per year</p>
+                <div class="mt-3 w-6 h-px bg-sb-blue/50"></div>
+                <p class="mt-2 text-[9.5px] uppercase tracking-[0.22em] text-sb-ink-muted font-medium">vs. traditional brushing</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Text — Right -->
+          <div class="flex items-center order-1 lg:order-2 reveal-item reveal-delay-100">
+            <div class="w-full">
+              <span class="eyebrow">Built for Modern Life</span>
+              <h2 class="section-title mt-5">
+                Time <span class="italic text-sb-blue">matters.</span>
+              </h2>
+              <div class="mt-6 space-y-4">
+                <p class="sb-paragraph">
+                  Two minutes of brushing twice a day — over a year, that's more than
+                  24 hours of your life. Sonic Brush® uses precision vibration
+                  technology and a one-button system to deliver a complete clean in 30
+                  seconds, fitting effortlessly into even the busiest mornings.
+                </p>
+                <!-- Quick stats inside details -->
+                <div class="grid grid-cols-2 gap-5 max-w-xs pt-2">
+                  <div>
+                    <div class="font-serif text-[36px] text-sb-blue leading-none">24h+</div>
+                    <div class="mt-2 text-[11px] uppercase tracking-[0.1em] text-sb-ink-muted">Saved per year</div>
+                  </div>
+                  <div>
+                    <div class="font-serif text-[36px] text-sb-blue leading-none">30s</div>
+                    <div class="mt-2 text-[11px] uppercase tracking-[0.1em] text-sb-ink-muted">Full clean cycle</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 04 — DESIGNED TO BE ACCESSIBLE ── -->
+    <section class="bg-white py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      <div class="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <!-- Text — Left -->
+          <div class="flex items-center reveal-item">
+            <div class="w-full">
+              <span class="eyebrow">Designed to Be Accessible</span>
+              <h2 class="section-title mt-5">
+                Oral care, <span class="italic text-sb-blue">for everyone.</span>
+              </h2>
+              <div class="mt-6 space-y-4">
+                <p class="sb-paragraph">
+                  Sonic Brush® was designed to make brushing easier for everyone —
+                  especially those who struggle with traditional routines. Our system
+                  can help support:
+                </p>
+                <ul class="space-y-2.5 pt-1">
+                  <li class="flex items-start gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-sb-blue mt-[3px] flex-shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span class="text-[15px] sm:text-[16px] leading-[1.65] text-sb-ink">Children who resist brushing</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-sb-blue mt-[3px] flex-shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span class="text-[15px] sm:text-[16px] leading-[1.65] text-sb-ink">Parents and caregivers helping with daily hygiene</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-sb-blue mt-[3px] flex-shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span class="text-[15px] sm:text-[16px] leading-[1.65] text-sb-ink">People with autism or ADHD</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-sb-blue mt-[3px] flex-shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span class="text-[15px] sm:text-[16px] leading-[1.65] text-sb-ink">People with sensory sensitivities</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="text-sb-blue mt-[3px] flex-shrink-0"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span class="text-[15px] sm:text-[16px] leading-[1.65] text-sb-ink">People with physical or neurological challenges and limitations</span>
+                  </li>
+                </ul>
+                <p class="sb-paragraph">
+                  By simplifying the process, Sonic Brush® helps make daily oral care a
+                  more manageable, consistent, and independent experience.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Image — Right -->
+          <!-- REPLACE src value with Shopify CDN image link (11 (1).png) -->
+          <div class="relative p-4 reveal-item reveal-delay-100">
+            <!-- Abstract Asymmetric Backing (Leaf Outline and Soft Circle Backdrop) -->
+            <div class="absolute -inset-1 border-2 border-sb-blue/15 rounded-[12px] -z-10 translate-x-3 -translate-y-3" aria-hidden="true"></div>
+            <div class="absolute -top-6 -right-6 w-36 h-36 bg-sb-blue-soft/80 rounded-full -z-10 filter blur-[8px] pointer-events-none" aria-hidden="true"></div>
+            <!-- Image Container -->
+            <div class="relative w-full h-[280px] sm:h-[400px] lg:h-[480px] overflow-hidden group rounded-[12px] border border-sb-line/30 shadow-md bg-white">
+              <img src="assets/story/lifestyle-04-inuse-clean.png" alt="Woman using Sonic Brush, clean white background" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+            </div>
+            <!-- Floating Badge Card -->
+            <div class="absolute bottom-1 left-1 z-20 inline-flex bg-white/95 backdrop-blur-md shadow-[0_24px_60px_-18px_rgba(3,68,164,0.45)] ring-1 ring-sb-ink/5 max-w-[264px] animate-float">
+              <div class="w-[3px] bg-sb-blue flex-shrink-0" aria-hidden="true"></div>
+              <div class="flex-1 px-5 py-4">
+                <div class="flex flex-col gap-[3px] mb-3.5" aria-hidden="true">
+                  <span class="block h-[2px] w-10 bg-sb-blue"></span>
+                  <span class="block h-[2px] w-6 bg-sb-blue ml-1.5"></span>
+                  <span class="block h-[2px] w-3 bg-sb-blue ml-3"></span>
+                </div>
+                <p class="text-[14px] font-semibold text-sb-ink leading-[1.3] tracking-[-0.005em]">Designed for all ages</p>
+                <div class="mt-3 w-6 h-px bg-sb-blue/50"></div>
+                <p class="mt-2 text-[9.5px] uppercase tracking-[0.22em] text-sb-ink-muted font-medium">Sensory-friendly & easy to use</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 05 — CONTINUOUS INNOVATION ── -->
+    <section class="bg-sb-blue-wash py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      <div class="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <!-- Image — Left -->
+          <!-- REPLACE src value with Shopify CDN image link (Sonic Brush (4).png) -->
+          <div class="relative order-2 lg:order-1 p-4 reveal-item">
+            <!-- Abstract Block Backing (Leaf Outline and Soft Circle Backdrop) -->
+            <div class="absolute -inset-2 border-2 border-sb-blue/15 rounded-[12px] -z-10 -translate-x-3 translate-y-3" aria-hidden="true"></div>
+            <div class="absolute -bottom-6 -right-6 w-36 h-36 bg-sb-blue-soft/80 rounded-full -z-10 filter blur-[8px] pointer-events-none" aria-hidden="true"></div>
+            <!-- Image Container (Mirrored Leaf Shape) -->
+            <div class="relative w-full h-[280px] sm:h-[400px] lg:h-[480px] overflow-hidden group rounded-[12px] border border-sb-line/30 shadow-md bg-white">
+              <img src="assets/story/spare-studio-hold.png" alt="Woman holding glowing Sonic Brush in dark blue studio" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+            </div>
+            <!-- Floating Badge Card -->
+            <div class="absolute bottom-1 right-1 z-20 inline-flex bg-white/95 backdrop-blur-md shadow-[0_24px_60px_-18px_rgba(3,68,164,0.45)] ring-1 ring-sb-ink/5 max-w-[264px] animate-float">
+              <div class="w-[3px] bg-sb-blue flex-shrink-0" aria-hidden="true"></div>
+              <div class="flex-1 px-5 py-4">
+                <div class="flex flex-col gap-[3px] mb-3.5" aria-hidden="true">
+                  <span class="block h-[2px] w-10 bg-sb-blue"></span>
+                  <span class="block h-[2px] w-6 bg-sb-blue ml-1.5"></span>
+                  <span class="block h-[2px] w-3 bg-sb-blue ml-3"></span>
+                </div>
+                <p class="text-[14px] font-semibold text-sb-ink leading-[1.3] tracking-[-0.005em]">Continuously refined</p>
+                <div class="mt-3 w-6 h-px bg-sb-blue/50"></div>
+                <p class="mt-2 text-[9.5px] uppercase tracking-[0.22em] text-sb-ink-muted font-medium">Research-driven engineering</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Text — Right -->
+          <div class="flex items-center order-1 lg:order-2 reveal-item reveal-delay-100">
+            <div class="w-full">
+              <span class="eyebrow">Continuous Innovation</span>
+              <h2 class="section-title mt-5">
+                An evolving <span class="italic text-sb-blue">technology.</span>
+              </h2>
+              <div class="mt-6 space-y-4">
+                <p class="sb-paragraph">
+                  We see Sonic Brush® as an evolving technology, not a static product.
+                  Each iteration is refined through research and clever engineering —
+                  from vibration calibration to material selection, every detail is
+                  optimised for comfort, performance, and long-term reliability.
+                </p>
+                <p class="text-[16px] sm:text-[17px] leading-[1.8] font-medium text-sb-ink">
+                  Our goal: to elevate your oral care through intelligent, user-centred design.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 06 — HEALTH, CONFIDENCE & DAILY HABITS ── -->
+    <section class="bg-white py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      <!-- Sweeping Blue Gradient Wave Backdrop (Right) -->
+      <div class="absolute bottom-0 right-0 w-full lg:w-[48%] h-[40%] lg:h-full z-0 overflow-hidden pointer-events-none select-none">
+        <!-- Light Blue Backdrop Shape (peeking out) -->
+        <div class="absolute bottom-0 right-0 w-[85%] h-[90%] bg-sb-blue rounded-t-[80px] lg:rounded-t-none lg:rounded-tl-[400px] opacity-90"></div>
+        <!-- Dark Blue Backdrop Shape (on top) -->
+        <div class="absolute bottom-0 left-0 w-[85%] h-full bg-gradient-to-t from-sb-blue-deep via-sb-blue-deep to-sb-blue rounded-t-[100px] lg:rounded-t-none lg:rounded-tl-[400px]"></div>
+      </div>
+      <div class="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <!-- Text — Left -->
+          <div class="flex items-center reveal-item">
+            <div class="w-full">
+              <span class="eyebrow">Daily Habits</span>
+              <h2 class="section-title mt-5">
+                Small daily habits create <span class="italic text-sb-blue">lasting impact.</span>
+              </h2>
+              <div class="mt-6 space-y-4">
+                <p class="sb-paragraph">
+                  Oral care is a daily habit — and habits shape long-term outcomes.
+                  When routines are simple, they're easier to maintain. When brushing
+                  becomes effortless, consistency follows naturally.
+                </p>
+                <p class="sb-paragraph">
+                  Sonic Brush® was designed to make brushing simple, reliable, and
+                  automatic — so you can focus on the results, not the process. Because
+                  it's the small daily rituals that create the biggest difference over
+                  time, especially for your health and confidence.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Image — Right -->
+          <!-- REPLACE src value with Shopify CDN image link (11 (6).png) -->
+          <div class="relative p-4 reveal-item reveal-delay-100">
+            <!-- Offset outline frame backing -->
+            <div class="absolute -inset-2 border-2 border-white/60 rounded-tl-[80px] sm:rounded-tl-[100px] rounded-br-[80px] sm:rounded-br-[100px] rounded-tr-[4px] rounded-bl-[4px] -z-10 translate-x-3 translate-y-3" aria-hidden="true"></div>
+            <!-- Image Container -->
+            <div class="relative w-full h-[280px] sm:h-[400px] lg:h-[480px] overflow-hidden group rounded-tl-[80px] sm:rounded-tl-[100px] rounded-br-[80px] sm:rounded-br-[100px] rounded-tr-[4px] rounded-bl-[4px] border-[6px] sm:border-[8px] border-white shadow-2xl bg-white">
+              <img src="assets/story/lifestyle-05-outdoor.png" alt="Woman using Sonic Brush outdoors in natural warm light" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+            </div>
+            <!-- Floating Badge Card -->
+            <div class="absolute bottom-1 left-1 z-20 inline-flex bg-white/95 backdrop-blur-md shadow-[0_24px_60px_-18px_rgba(3,68,164,0.45)] ring-1 ring-sb-ink/5 max-w-[264px] animate-float">
+              <div class="w-[3px] bg-sb-blue flex-shrink-0" aria-hidden="true"></div>
+              <div class="flex-1 px-5 py-4">
+                <div class="flex flex-col gap-[3px] mb-3.5" aria-hidden="true">
+                  <span class="block h-[2px] w-10 bg-sb-blue"></span>
+                  <span class="block h-[2px] w-6 bg-sb-blue ml-1.5"></span>
+                  <span class="block h-[2px] w-3 bg-sb-blue ml-3"></span>
+                </div>
+                <p class="text-[14px] font-semibold text-sb-ink leading-[1.3] tracking-[-0.005em]">Daily habit formed</p>
+                <div class="mt-3 w-6 h-px bg-sb-blue/50"></div>
+                <p class="mt-2 text-[9.5px] uppercase tracking-[0.22em] text-sb-ink-muted font-medium">Simple, consistent, automatic</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 07 — OUR COMMITMENT ── -->
+    <section class="bg-sb-blue-deep py-20 sm:py-28 relative overflow-hidden">
+      <div class="max-w-[900px] mx-auto px-5 sm:px-8 lg:px-12 text-center flex flex-col items-center reveal-item">
+        <!-- Large decorative opening quote -->
+        <div class="font-serif text-[100px] sm:text-[140px] leading-none text-sb-blue/40 select-none -mb-4 sm:-mb-6" aria-hidden="true">
+          “
+        </div>
+        <span class="eyebrow eyebrow--light">Our Commitment</span>
+        <h2 class="mt-6 font-serif text-[30px] sm:text-[42px] lg:text-[50px] leading-[1.2] text-white">
+          Trust is built through consistent quality, transparency, and continuous improvement.
+        </h2>
+        <p class="mt-8 text-[16px] sm:text-[18px] leading-[1.8] text-white/80 max-w-[720px] mx-auto">
+          At Sonic Brush®, we listen to our customers and refine our products
+          based on real-world feedback. We are committed to delivering
+          products that reflect modern expectations — building a brand you can
+          trust for smarter, more consistent oral care, every single day.
+        </p>
+        <!-- Elegant divider -->
+        <div class="mt-10 w-24 h-px bg-sb-blue-soft/30"></div>
+      </div>
+    </section>
+
+
+    <!-- ── 08 — THE FUTURE — 2-column split CTA ── -->
+    <section class="bg-white py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      <div class="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <!-- Left — text + CTA -->
+          <div class="flex items-center reveal-item">
+            <div class="w-full">
+              <span class="eyebrow">The Future of Brushing</span>
+              <h2 class="section-title mt-5">
+                Welcome to the <span class="italic text-sb-blue">future of brushing.</span>
+              </h2>
+              <p class="sb-paragraph mt-6">
+                We believe the future of oral care lies in intelligent automation,
+                thoughtful design, and routines that fit the pace of everyday life.
+                Sonic Brush® is our contribution to that future.
+              </p>
+              <p class="mt-6 font-serif italic text-[22px] sm:text-[26px] leading-[1.3] text-sb-ink">
+                The toothbrush had its era.
+                <br />
+                Now it's time for something better.
+              </p>
+              <a href="https://sonic-brush.net/collections/sonic-brush-products" class="btn-sb-primary mt-8 inline-flex items-center gap-2">
+                Shop Sonic Brush
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right — Product Image -->
+          <!-- REPLACE src value with Shopify CDN image link (Sonic Brush (4).png) -->
+          <div class="relative p-4 reveal-item reveal-delay-100">
+            <!-- Abstract Silhouette Backing (Leaf Outline and Soft Circle Backdrop) -->
+            <div class="absolute -inset-2 border-2 border-sb-blue/20 rounded-[12px] -z-10 translate-x-3 -translate-y-3" aria-hidden="true"></div>
+            <div class="absolute -bottom-6 -left-6 w-36 h-36 bg-sb-blue-soft/80 rounded-full -z-10 filter blur-[8px] pointer-events-none" aria-hidden="true"></div>
+            <!-- Image Container -->
+            <div class="relative w-full h-[300px] sm:h-[420px] lg:h-[480px] overflow-hidden group rounded-[12px] border border-sb-line/30 shadow-md bg-white">
+              <img src="assets/story/spare-studio-hold.png" alt="Sonic Brush — the future of brushing" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── SCRIPTS ── -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      
+      // 1. Hero background parallax scrolling (throttle, skipped if prefers-reduced-motion is enabled or native CSS is used)
+      const heroParallax = document.getElementById("hero-parallax-wrapper");
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let ticking = false;
+
+      if (heroParallax && !prefersReducedMotion && !CSS.supports('animation-timeline: scroll()')) {
+        window.addEventListener("scroll", function () {
+          if (!ticking) {
+            window.requestAnimationFrame(function () {
+              heroParallax.style.transform = "translateY(" + (window.scrollY * 0.1) + "px)";
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+      }
+
+      // Generic count-up/down animation for stats numbers
+      function animateCount(el) {
+        if (prefersReducedMotion) {
+          const target = el.getAttribute("data-target");
+          const suffix = el.getAttribute("data-suffix") || "";
+          el.textContent = target + suffix;
+          return;
+        }
+        
+        const start = parseInt(el.getAttribute("data-start") || "0", 10);
+        const target = parseInt(el.getAttribute("data-target"), 10);
+        const suffix = el.getAttribute("data-suffix") || "";
+        const duration = 1600; // 1.6 seconds smooth DTC easing
+        const startTime = performance.now();
+        
+        function update(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease-out quad
+          const easeProgress = progress * (2 - progress);
+          
+          const currentValue = Math.round(start + (target - start) * easeProgress);
+          el.textContent = currentValue + suffix;
+          
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          }
+        }
+        
+        requestAnimationFrame(update);
+      }
+
+      // 2. IntersectionObserver for Scroll-Reveal animations
+      const revealItems = document.querySelectorAll(".reveal-item");
+      
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              
+              // Trigger count animation on visible elements
+              const countEl = entry.target.querySelector(".count-up-stat");
+              if (countEl) {
+                animateCount(countEl);
+              }
+              
+              observer.unobserve(entry.target); // Trigger once
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: "0px 0px -40px 0px"
+        });
+
+        revealItems.forEach(function (item) {
+          observer.observe(item);
+        });
+      } else {
+        // Fallback for older browsers
+        revealItems.forEach(function (item) {
+          item.classList.add("is-visible");
+          const countEl = item.querySelector(".count-up-stat");
+          if (countEl) {
+            animateCount(countEl);
+          }
+        });
+      }
+
+    });
+  </script>
+
+</body>
+</html>
