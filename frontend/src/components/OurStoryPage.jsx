@@ -253,7 +253,7 @@ export const OurStoryPage = () => {
 
       {/* ── 01 — OUR MISSION ── */}
       <Split
-        eyebrow="01 — Our Mission"
+        eyebrow="Our Mission"
         title={<>Most people don't brush <span className="italic text-[var(--sb-blue)]">perfectly.</span></>}
         image={assets.story.mission}
         alt="Woman holding Sonic Brush U-shaped device, smiling"
@@ -285,7 +285,7 @@ export const OurStoryPage = () => {
 
       {/* ── 02 — A NEW WAY TO BRUSH ── */}
       <Split
-        eyebrow="02 — A New Way to Brush"
+        eyebrow="A New Way to Brush"
         title={<>So we built <span className="italic text-[var(--sb-blue)]">something better.</span></>}
         image={assets.story.newWay}
         alt="Woman using Sonic Brush in dark blue studio"
@@ -308,7 +308,7 @@ export const OurStoryPage = () => {
 
       {/* ── 03 — BUILT FOR MODERN LIFE ── */}
       <Split
-        eyebrow="03 — Built for Modern Life"
+        eyebrow="Built for Modern Life"
         title={<>Time <span className="italic text-[var(--sb-blue)]">matters.</span></>}
         image={assets.story.modernLife}
         alt="Woman using Sonic Brush against blue background"
@@ -341,7 +341,7 @@ export const OurStoryPage = () => {
 
       {/* ── 04 — DESIGNED TO BE ACCESSIBLE ── */}
       <Split
-        eyebrow="04 — Designed to Be Accessible"
+        eyebrow="Designed to Be Accessible"
         title={<>Oral care, <span className="italic text-[var(--sb-blue)]">for everyone.</span></>}
         image={assets.story.accessible}
         alt="Woman using Sonic Brush, clean white background"
@@ -393,7 +393,7 @@ export const OurStoryPage = () => {
 
       {/* ── 05 — CONTINUOUS INNOVATION ── */}
       <Split
-        eyebrow="05 — Continuous Innovation"
+        eyebrow="Continuous Innovation"
         title={<>An evolving <span className="italic text-[var(--sb-blue)]">technology.</span></>}
         image={assets.story.innovation}
         alt="Woman holding glowing Sonic Brush in dark blue studio"
@@ -419,7 +419,7 @@ export const OurStoryPage = () => {
 
       {/* ── 06 — HEALTH, CONFIDENCE & DAILY HABITS ── */}
       <Split
-        eyebrow="06 — Health, Confidence & Daily Habits"
+        eyebrow="Health, Confidence & Daily Habits"
         title={<>Small daily habits create <span className="italic text-[var(--sb-blue)]">lasting impact.</span></>}
         image={assets.story.habits}
         alt="Woman using Sonic Brush outdoors in natural warm light"
@@ -459,7 +459,7 @@ export const OurStoryPage = () => {
               "
             </div>
             <span className="text-white/50 text-[11px] uppercase tracking-[0.18em]">
-              07 — Our Commitment
+              Our Commitment
             </span>
             <h2 className="mt-4 font-serif-display text-[26px] sm:text-[36px] lg:text-[48px] leading-[1.15] text-white">
               Trust is built through consistent quality,
@@ -485,7 +485,7 @@ export const OurStoryPage = () => {
           {/* Left — text + CTA */}
           <div className="flex items-center px-5 sm:px-10 lg:px-16 xl:px-20 py-16 sm:py-20">
             <div className="max-w-[480px]">
-              <span className="eyebrow">08 — The Future of Brushing</span>
+              <span className="eyebrow">The Future of Brushing</span>
               <h2 className="section-title mt-4">
                 Welcome to the{" "}
                 <span className="italic text-[var(--sb-blue)]">future of brushing.</span>
