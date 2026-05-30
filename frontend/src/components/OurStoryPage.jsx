@@ -77,8 +77,8 @@ const Split = ({
               <div className="flex items-center">
                 <div className="w-full">
                   <span className="eyebrow">{eyebrow}</span>
-                  <h2 className="section-title mt-4">{title}</h2>
-                  <div className="mt-6 space-y-4">{children}</div>
+                  <h2 className="section-title mt-6">{title}</h2>
+                  <div className="mt-7 space-y-4">{children}</div>
                 </div>
               </div>
               {/* Image — right */}
@@ -110,8 +110,8 @@ const Split = ({
               <div className="flex items-center order-1 lg:order-2">
                 <div className="w-full">
                   <span className="eyebrow">{eyebrow}</span>
-                  <h2 className="section-title mt-4">{title}</h2>
-                  <div className="mt-6 space-y-4">{children}</div>
+                  <h2 className="section-title mt-6">{title}</h2>
+                  <div className="mt-7 space-y-4">{children}</div>
                 </div>
               </div>
             </>
@@ -189,7 +189,7 @@ export const OurStoryPage = () => {
         <div className="relative z-10 w-full px-5 sm:px-10 lg:px-16 pb-12 sm:pb-16 lg:pb-20">
           <div className="max-w-[580px]">
             <h1
-              className="mt-4 font-serif-display text-[36px] sm:text-[50px] lg:text-[62px] leading-[1.05] text-white"
+              className="mt-4 font-serif-display text-[44px] sm:text-[64px] lg:text-[80px] leading-[1.02] tracking-[-0.025em] text-white"
               style={{ textShadow: "0 2px 24px rgba(2,45,110,0.7)" }}
             >
               The Toothbrush
@@ -458,14 +458,14 @@ export const OurStoryPage = () => {
             >
               "
             </div>
-            <span className="text-white/50 text-[11px] uppercase tracking-[0.18em]">
+            <span className="eyebrow eyebrow--light">
               Our Commitment
             </span>
-            <h2 className="mt-4 font-serif-display text-[26px] sm:text-[36px] lg:text-[48px] leading-[1.15] text-white">
+            <h2 className="mt-6 section-title section-title--xl text-white">
               Trust is built through consistent quality,
               transparency, and continuous improvement.
             </h2>
-            <p className="mt-6 text-[16px] sm:text-[17px] leading-[1.8] text-white/70 max-w-[600px]">
+            <p className="mt-7 section-lead text-white/75 max-w-[620px]">
               At Sonic Brush®, we listen to our customers and refine our products
               based on real-world feedback. We are committed to delivering
               products that reflect modern expectations — building a brand you can
@@ -486,16 +486,16 @@ export const OurStoryPage = () => {
           <div className="flex items-center px-5 sm:px-10 lg:px-16 xl:px-20 py-16 sm:py-20">
             <div className="max-w-[480px]">
               <span className="eyebrow">The Future of Brushing</span>
-              <h2 className="section-title mt-4">
+              <h2 className="section-title section-title--xl mt-6">
                 Welcome to the{" "}
                 <span className="italic text-[var(--sb-blue)]">future of brushing.</span>
               </h2>
-              <P className="mt-6">
+              <p className="mt-7 section-lead text-[var(--sb-ink-muted)]">
                 We believe the future of oral care lies in intelligent automation,
                 thoughtful design, and routines that fit the pace of everyday life.
                 Sonic Brush® is our contribution to that future.
-              </P>
-              <p className="mt-6 font-serif-display italic text-[20px] sm:text-[24px] leading-[1.3] text-[var(--sb-ink)]">
+              </p>
+              <p className="mt-7 font-serif-display italic text-[22px] sm:text-[28px] leading-[1.3] text-[var(--sb-ink)]">
                 The toothbrush had its era.
                 <br />
                 Now it's time for something better.

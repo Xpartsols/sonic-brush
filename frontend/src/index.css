@@ -48,14 +48,29 @@ code {
     letter-spacing: -0.02em;
 }
 
-/* Subtle eyebrow label */
+/* Subtle eyebrow label — stronger, with a leading hairline anchor */
 .eyebrow {
     font-family: 'Outfit', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--sb-blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1;
+}
+.eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 2px;
+    background-color: currentColor;
+}
+/* Light variant for dark backgrounds */
+.eyebrow--light {
+    color: var(--sb-blue-soft);
 }
 
 /* Sharp minimal button */
@@ -110,10 +125,35 @@ code {
 .section-title {
     font-family: 'Tenor Sans', sans-serif;
     font-weight: 400;
-    font-size: clamp(26px, 4vw, 44px);
-    letter-spacing: -0.02em;
-    line-height: 1.15;
+    font-size: clamp(34px, 5vw, 60px);
+    letter-spacing: -0.025em;
+    line-height: 1.05;
     color: var(--sb-ink);
+}
+
+/* Extra-large section heading — for marquee/feature sections */
+.section-title--xl {
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.02;
+}
+
+/* Light variant for dark backgrounds */
+.section-title--light {
+    color: #ffffff;
+}
+
+/* Lead paragraph — confident intro paragraph beneath a section title */
+.section-lead {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(17px, 1.4vw, 20px);
+    line-height: 1.6;
+    color: var(--sb-ink);
+    font-weight: 400;
+}
+
+/* Light variant for dark backgrounds */
+.section-lead--light {
+    color: rgba(255, 255, 255, 0.78);
 }
 
 /* Hero CTA button — white fill, clearly readable over dark gradient */
