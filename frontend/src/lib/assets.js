@@ -14,6 +14,10 @@ export const assets = {
   // Full-bleed visual break — landscape daylight in-use shot (124(6).png, 1200×628)
   fullBleed: "/assets/story/lifestyle-03-inuse-daylight.png",
 
+  // CTA closing section — Sonic Brush (4).png, 2048×2048
+  // Woman holding glowing U-brush, dark blue studio background
+  cta: "/assets/story/spare-studio-hold.png",
+
   // Hero — responsive: different crop for desktop vs mobile
   // Desktop: 124(6).png landscape (1200×628) — woman U-brush in mouth, bright white room
   // Mobile:  2.png portrait (960×1200)       — same shot, tighter crop for tall screens

@@ -134,18 +134,17 @@ const supportGroups = [
 ];
 
 const proofStats = [
-  { stat: "30s",  label: "Full clean cycle"   },
-  { stat: "360°", label: "All teeth at once"  },
-  { stat: "0",    label: "Technique required" },
+  { stat: "30s",  label: "Full clean cycle",   desc: "Every tooth brushed in a single automated pass" },
+  { stat: "360°", label: "All teeth at once",  desc: "Simultaneous coverage — nothing missed"         },
+  { stat: "0",    label: "Technique required", desc: "Press once and let Sonic Brush® do the work"    },
 ];
 
 // ── Page ─────────────────────────────────────────────────────────────────────
 
 export const OurStoryPage = () => {
-  const heroImgRef   = useRef(null);
-  const fullBleedRef = useRef(null);
+  const heroImgRef = useRef(null);
 
-  // ── Parallax (RAF-throttled, 60fps) ────────────────────────────────────────
+  // ── Parallax on hero image (RAF-throttled, 60fps) ──────────────────────────
   useEffect(() => {
     let ticking = false;
 
@@ -153,21 +152,9 @@ export const OurStoryPage = () => {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
-        const y = window.scrollY;
-
         if (heroImgRef.current) {
-          heroImgRef.current.style.transform = `scale(1.12) translateY(${y * 0.3}px)`;
+          heroImgRef.current.style.transform = `scale(1.12) translateY(${window.scrollY * 0.3}px)`;
         }
-
-        if (fullBleedRef.current) {
-          const section = fullBleedRef.current.closest("section");
-          if (section) {
-            const rect     = section.getBoundingClientRect();
-            const progress = (window.innerHeight / 2 - rect.top) / section.offsetHeight;
-            fullBleedRef.current.style.transform = `scale(1.15) translateY(${progress * 70}px)`;
-          }
-        }
-
         ticking = false;
       });
     };
@@ -201,12 +188,6 @@ export const OurStoryPage = () => {
         {/* Text — bottom-left, editorial style */}
         <div className="relative z-10 w-full px-5 sm:px-10 lg:px-16 pb-12 sm:pb-16 lg:pb-20">
           <div className="max-w-[580px]">
-            <span
-              className="text-white/70 tracking-[0.2em] text-[11px] uppercase"
-              style={{ textShadow: "0 1px 8px rgba(2,45,110,0.8)" }}
-            >
-              Our Story
-            </span>
             <h1
               className="mt-4 font-serif-display text-[36px] sm:text-[50px] lg:text-[62px] leading-[1.05] text-white"
               style={{ textShadow: "0 2px 24px rgba(2,45,110,0.7)" }}
@@ -235,21 +216,38 @@ export const OurStoryPage = () => {
         </div>
       </section>
 
-      {/* ── PROOF STRIP ── */}
-      <div className="bg-[var(--sb-blue)] py-8 sm:py-11">
-        <div className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-3 gap-4 text-center">
-            {proofStats.map(({ stat, label }) => (
-              <div key={label}>
-                <div className="font-serif-display text-[36px] sm:text-[52px] leading-none text-white">
-                  {stat}
-                </div>
-                <div className="mt-2 text-[10px] sm:text-[11px] uppercase tracking-[0.15em] text-white/60">
-                  {label}
-                </div>
+      {/* ── PROOF STRIP — equal highlight blocks ── */}
+      <div className="bg-[var(--sb-blue-deep)]">
+        <div className="grid grid-cols-3">
+          {[
+            { stat: "30s",   label: "Full clean cycle",   sub: "Every tooth, every time"       },
+            { stat: "360°",  label: "All teeth at once",  sub: "Simultaneous coverage"         },
+            { stat: "0",     label: "Technique required", sub: "Just press and brush"          },
+          ].map(({ stat, label, sub }, i) => (
+            <div
+              key={stat}
+              className={`relative flex flex-col items-center text-center py-10 sm:py-14 lg:py-16 px-4 sm:px-8
+                ${i !== 0 ? "border-l border-white/10" : ""}`}
+            >
+              {/* Top accent — the highlight marker */}
+              <div className="w-8 h-[2px] bg-[var(--sb-blue-soft)] mb-5 sm:mb-7" />
+
+              {/* Number */}
+              <div className="font-serif-display text-[52px] sm:text-[72px] lg:text-[88px] leading-none text-white">
+                {stat}
               </div>
-            ))}
-          </div>
+
+              {/* Label */}
+              <div className="mt-3 sm:mt-4 text-[9px] sm:text-[10px] uppercase tracking-[0.22em] text-white/45">
+                {label}
+              </div>
+
+              {/* Sub — hidden on mobile */}
+              <p className="hidden sm:block mt-1.5 text-[11px] sm:text-[12px] text-white/25 leading-snug max-w-[140px]">
+                {sub}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -376,20 +374,20 @@ export const OurStoryPage = () => {
         </P>
       </Split>
 
-      {/* ── FULL-BLEED VISUAL BREAK ── */}
-      <section className="relative h-[45vh] min-h-[280px] max-h-[480px] overflow-hidden">
-        <img
-          ref={fullBleedRef}
-          src={assets.fullBleed}
-          alt="Sonic Brush in use — natural daylight"
-          className="absolute inset-0 w-full h-full object-cover object-center"
-          style={{ transform: "scale(1.15)", willChange: "transform" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--sb-blue-deep)]/80 via-[var(--sb-blue-deep)]/40 to-transparent" />
-        <div className="relative z-10 h-full flex items-center px-5 sm:px-12 lg:px-20 max-w-[1280px] mx-auto">
-          <blockquote className="font-serif-display italic text-[22px] sm:text-[32px] lg:text-[40px] leading-[1.25] text-white max-w-lg">
-            "Smarter brushing.<br />Consistent results.<br />Every single day."
+      {/* ── MANIFESTO BREAK — pure typography, no image ── */}
+      <section className="bg-[var(--sb-ink)] py-20 sm:py-28">
+        <div className="max-w-[860px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
+          <blockquote className="font-serif-display italic text-[32px] sm:text-[48px] lg:text-[58px] leading-[1.15] text-white">
+            "Smarter brushing.
+            <br />Consistent results.
+            <br />Every single day."
           </blockquote>
+          {/* Signature rule */}
+          <div className="mt-10 flex items-center justify-center gap-5">
+            <div className="w-12 h-px bg-white/20" />
+            <span className="text-white/40 text-[11px] uppercase tracking-[0.22em]">Sonic Brush®</span>
+            <div className="w-12 h-px bg-white/20" />
+          </div>
         </div>
       </section>
 
@@ -449,48 +447,83 @@ export const OurStoryPage = () => {
       </Split>
 
       {/* ── 07 — OUR COMMITMENT ── */}
-      <section className="bg-[var(--sb-blue-deep)] py-16 sm:py-24">
-        <div className="max-w-[860px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
-          <span className="text-white/60 text-[11px] uppercase tracking-[0.18em]">07 — Our Commitment</span>
-          <h2 className="mt-5 font-serif-display text-[26px] sm:text-[34px] lg:text-[44px] leading-[1.2] text-white">
-            Trust is built through consistent quality,
-            transparency, and continuous improvement.
-          </h2>
-          <p className="mt-7 text-[16px] sm:text-[17px] leading-[1.8] text-white/75 max-w-2xl mx-auto">
-            At Sonic Brush®, we listen to our customers and refine our products
-            based on real-world feedback. We are committed to delivering
-            products that reflect modern expectations — building a brand you can
-            trust for smarter, more consistent oral care, every single day.
-          </p>
+      {/* Redesign: left-aligned with large decorative quote mark */}
+      <section className="bg-[var(--sb-blue-deep)] py-16 sm:py-24 overflow-hidden">
+        <div className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
+          <div className="max-w-[780px]">
+            {/* Large decorative opening quote */}
+            <div
+              className="font-serif-display text-[120px] sm:text-[160px] leading-none text-[var(--sb-blue)]/40 select-none -mb-6 sm:-mb-8"
+              aria-hidden="true"
+            >
+              "
+            </div>
+            <span className="text-white/50 text-[11px] uppercase tracking-[0.18em]">
+              07 — Our Commitment
+            </span>
+            <h2 className="mt-4 font-serif-display text-[26px] sm:text-[36px] lg:text-[48px] leading-[1.15] text-white">
+              Trust is built through consistent quality,
+              transparency, and continuous improvement.
+            </h2>
+            <p className="mt-6 text-[16px] sm:text-[17px] leading-[1.8] text-white/70 max-w-[600px]">
+              At Sonic Brush®, we listen to our customers and refine our products
+              based on real-world feedback. We are committed to delivering
+              products that reflect modern expectations — building a brand you can
+              trust for smarter, more consistent oral care, every single day.
+            </p>
+            {/* Divider rule */}
+            <div className="mt-10 w-16 h-[2px] bg-[var(--sb-blue-soft)]/40" />
+          </div>
         </div>
       </section>
 
-      {/* ── 08 — THE FUTURE OF BRUSHING ── */}
-      <section className="bg-white py-16 sm:py-24">
-        <div className="max-w-[860px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
-          <span className="eyebrow">08 — The Future of Brushing</span>
-          <h2 className="section-title mt-4">
-            Welcome to the{" "}
-            <span className="italic text-[var(--sb-blue)]">future of brushing.</span>
-          </h2>
-          <P className="mt-7 max-w-2xl mx-auto">
-            We believe the future of oral care lies in intelligent automation,
-            thoughtful design, and routines that fit the pace of everyday life.
-            Sonic Brush® is our contribution to that future — not replacing the
-            fundamentals of oral hygiene, but improving how they're delivered.
-          </P>
-          <p className="mt-8 font-serif-display italic text-[22px] sm:text-[28px] leading-[1.25] text-[var(--sb-ink)]">
-            The toothbrush had its era.
-            <br />
-            Now it's time for something better.
-          </p>
-          <a
-            href="https://sonic-brush.net/collections/sonic-brush-products"
-            className="btn-sb-primary mt-10 inline-flex items-center gap-2"
-          >
-            Shop Sonic Brush
-            <ArrowRight size={14} />
-          </a>
+      {/* ── 08 — THE FUTURE — 2-column split CTA ── */}
+      {/* Completely different: text left + product image right */}
+      <section className="bg-white relative overflow-hidden">
+        <div className="grid lg:grid-cols-2 min-h-[480px] sm:min-h-[560px]">
+
+          {/* Left — text + CTA */}
+          <div className="flex items-center px-5 sm:px-10 lg:px-16 xl:px-20 py-16 sm:py-20">
+            <div className="max-w-[480px]">
+              <span className="eyebrow">08 — The Future of Brushing</span>
+              <h2 className="section-title mt-4">
+                Welcome to the{" "}
+                <span className="italic text-[var(--sb-blue)]">future of brushing.</span>
+              </h2>
+              <P className="mt-6">
+                We believe the future of oral care lies in intelligent automation,
+                thoughtful design, and routines that fit the pace of everyday life.
+                Sonic Brush® is our contribution to that future.
+              </P>
+              <p className="mt-6 font-serif-display italic text-[20px] sm:text-[24px] leading-[1.3] text-[var(--sb-ink)]">
+                The toothbrush had its era.
+                <br />
+                Now it's time for something better.
+              </p>
+              <a
+                href="https://sonic-brush.net/collections/sonic-brush-products"
+                className="btn-sb-primary mt-8 inline-flex items-center gap-2"
+              >
+                Shop Sonic Brush
+                <ArrowRight size={14} />
+              </a>
+            </div>
+          </div>
+
+          {/* Right — product image, full height */}
+          <div className="relative min-h-[340px] lg:min-h-0">
+            {/* Abstract block behind image */}
+            <div className="absolute top-0 right-0 w-[55%] h-[55%] bg-[var(--sb-blue-soft)]" />
+            <div className="absolute bottom-0 left-0 w-[22%] h-[28%] bg-[var(--sb-blue-deep)]/10" />
+            <div className="absolute inset-0 z-10 overflow-hidden">
+              <img
+                src={assets.cta}
+                alt="Sonic Brush — the future of brushing"
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+          </div>
+
         </div>
       </section>
 
