@@ -13,78 +13,110 @@ const P = ({ children, className = "" }) => (
 );
 
 /**
- * Split section with full-height image and abstract shape decorations.
+ * Floating notification-style card — sits on top of the image.
+ * Inspired by the Yousign "You have sent a signature request" card style.
+ */
+const FloatCard = ({ icon, label, sub }) => (
+  <div className="inline-flex items-start gap-3 bg-white shadow-[0_8px_40px_rgba(3,68,164,0.18)] px-4 py-3.5 max-w-[240px]">
+    <span className="text-[var(--sb-blue)] mt-0.5 flex-shrink-0">{icon}</span>
+    <div>
+      <p className="text-[13px] font-[600] text-[var(--sb-ink)] leading-tight">{label}</p>
+      {sub && <p className="mt-0.5 text-[11px] text-[var(--sb-ink-muted)]">{sub}</p>}
+    </div>
+  </div>
+);
+
+/**
+ * Yousign-inspired split section.
  *
- * The decorations are two offset rectangles that peek out from behind the
- * image — one large at the top corner, one small accent at the bottom corner.
- * Colors vary by tone so wash vs white sections look distinct.
+ * - Full-bleed abstract blocks extend from the outer corner to the page edge
+ *   (positioned relative to the section, not the content container).
+ * - Image fills the full height of the grid column.
+ * - Optional floating card sits on the image.
  *
- * flip  – image on left, text on right
- * tone  – "white" | "wash"
+ * Props:
+ *   flip    – image on LEFT, text on RIGHT
+ *   tone    – "white" | "wash"
+ *   badge   – optional <FloatCard /> element rendered on the image
  */
 const Split = ({
   eyebrow,
   title,
   image,
   alt,
-  flip = false,
-  tone = "white",
+  flip   = false,
+  tone   = "white",
+  badge,
   children,
 }) => {
-  const bg      = tone === "wash" ? "bg-[var(--sb-blue-wash)]" : "bg-white";
-  // Shape colours vary by tone for visual contrast
-  const shape1  = tone === "wash" ? "bg-white/70"              : "bg-[var(--sb-blue-soft)]";
-  const shape2  = tone === "wash" ? "bg-[var(--sb-blue)]/25"   : "bg-[var(--sb-blue-deep)]/15";
-
-  // Padding on the image wrapper creates visible space for shapes to peek through
-  const padClass = flip ? "pt-8 pl-8 sm:pt-12 sm:pl-12" : "pt-8 pr-8 sm:pt-12 sm:pr-12";
-
-  const imgEl = (
-    <div className={`relative h-full ${padClass}`}>
-      {/* Large abstract rect — peeks from the top outer corner */}
-      <div
-        className={`absolute top-0 ${flip ? "left-0" : "right-0"} w-[72%] h-[65%] ${shape1}`}
-      />
-      {/* Small accent rect — opposite bottom corner */}
-      <div
-        className={`absolute bottom-0 ${flip ? "right-0" : "left-0"} w-[32%] h-[28%] ${shape2}`}
-      />
-      {/* Image — sits above shapes, fills the padded area */}
-      <div className="relative z-10 overflow-hidden min-h-[360px] sm:min-h-[500px] lg:h-full">
-        <img
-          src={image}
-          alt={alt}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      </div>
-    </div>
-  );
-
-  const textEl = (
-    <div className="flex items-center py-4 lg:py-8">
-      <div className="w-full">
-        <span className="eyebrow">{eyebrow}</span>
-        <h2 className="section-title mt-4">{title}</h2>
-        <div className="mt-6 space-y-4">{children}</div>
-      </div>
-    </div>
-  );
+  const bg     = tone === "wash" ? "bg-[var(--sb-blue-wash)]" : "bg-white";
+  // Full-bleed block colors vary by tone
+  const block1 = tone === "wash" ? "bg-white/80"             : "bg-[var(--sb-blue-soft)]";
+  const block2 = tone === "wash" ? "bg-[var(--sb-blue)]/18"  : "bg-[var(--sb-blue-deep)]/10";
 
   return (
-    <section className={`${bg} py-12 sm:py-16`}>
-      <div className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
+    <section className={`${bg} relative overflow-hidden`}>
+
+      {/* ── Full-bleed abstract blocks (extend to page edge) ── */}
+      {/* Large — top outer corner */}
+      <div
+        className={`absolute top-0 ${flip ? "left-0" : "right-0"} w-[46%] h-[60%] ${block1} pointer-events-none`}
+      />
+      {/* Small accent — bottom inner corner */}
+      <div
+        className={`absolute bottom-0 ${flip ? "right-0" : "left-0"} w-[16%] h-[24%] ${block2} pointer-events-none`}
+      />
+
+      {/* ── Content (max-width container) ── */}
+      <div className="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 py-12 sm:py-16 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
-          {flip ? (
+
+          {!flip ? (
             <>
-              <div className="order-2 lg:order-1">{imgEl}</div>
-              <div className="order-1 lg:order-2">{textEl}</div>
+              {/* Text — left */}
+              <div className="flex items-center">
+                <div className="w-full">
+                  <span className="eyebrow">{eyebrow}</span>
+                  <h2 className="section-title mt-4">{title}</h2>
+                  <div className="mt-6 space-y-4">{children}</div>
+                </div>
+              </div>
+              {/* Image — right */}
+              <div className="relative min-h-[380px] sm:min-h-[520px] lg:min-h-0 lg:h-full">
+                <img
+                  src={image}
+                  alt={alt}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                {badge && (
+                  <div className="absolute bottom-5 left-5 z-20">{badge}</div>
+                )}
+              </div>
             </>
           ) : (
             <>
-              <div>{textEl}</div>
-              <div>{imgEl}</div>
+              {/* Image — left (order-2 on mobile so text reads first) */}
+              <div className="relative order-2 lg:order-1 min-h-[380px] sm:min-h-[520px] lg:min-h-0 lg:h-full">
+                <img
+                  src={image}
+                  alt={alt}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                {badge && (
+                  <div className="absolute bottom-5 right-5 z-20">{badge}</div>
+                )}
+              </div>
+              {/* Text — right */}
+              <div className="flex items-center order-1 lg:order-2">
+                <div className="w-full">
+                  <span className="eyebrow">{eyebrow}</span>
+                  <h2 className="section-title mt-4">{title}</h2>
+                  <div className="mt-6 space-y-4">{children}</div>
+                </div>
+              </div>
             </>
           )}
+
         </div>
       </div>
     </section>
@@ -102,18 +134,18 @@ const supportGroups = [
 ];
 
 const proofStats = [
-  { stat: "30s",   label: "Full clean cycle"    },
-  { stat: "360°",  label: "All teeth at once"   },
-  { stat: "0",     label: "Technique required"  },
+  { stat: "30s",  label: "Full clean cycle"   },
+  { stat: "360°", label: "All teeth at once"  },
+  { stat: "0",    label: "Technique required" },
 ];
 
 // ── Page ─────────────────────────────────────────────────────────────────────
 
 export const OurStoryPage = () => {
-  const heroImgRef     = useRef(null);
-  const fullBleedRef   = useRef(null);
+  const heroImgRef   = useRef(null);
+  const fullBleedRef = useRef(null);
 
-  // ── Parallax scroll handler (RAF-throttled for 60fps) ──────────────────────
+  // ── Parallax (RAF-throttled, 60fps) ────────────────────────────────────────
   useEffect(() => {
     let ticking = false;
 
@@ -123,12 +155,10 @@ export const OurStoryPage = () => {
       requestAnimationFrame(() => {
         const y = window.scrollY;
 
-        // Hero — image drifts up at 30% of scroll speed
         if (heroImgRef.current) {
           heroImgRef.current.style.transform = `scale(1.12) translateY(${y * 0.3}px)`;
         }
 
-        // Full-bleed break — relative parallax to section position
         if (fullBleedRef.current) {
           const section = fullBleedRef.current.closest("section");
           if (section) {
@@ -151,7 +181,6 @@ export const OurStoryPage = () => {
 
       {/* ── HERO ── */}
       <section className="relative h-[78vh] min-h-[540px] max-h-[820px] flex items-end justify-center overflow-hidden">
-        {/* Parallax image — scale(1.12) gives room to drift without showing edges */}
         <picture className="absolute inset-0 w-full h-full">
           <source media="(max-width: 767px)" srcSet={assets.heroMobile} />
           <img
@@ -162,9 +191,7 @@ export const OurStoryPage = () => {
             style={{ transform: "scale(1.12)", willChange: "transform" }}
           />
         </picture>
-        {/* Stronger gradient — covers the full image so white text is always readable */}
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--sb-blue-deep)]/95 via-[var(--sb-blue-deep)]/60 to-[var(--sb-blue-deep)]/20" />
-        {/* Text — text-shadow reinforces readability on any background brightness */}
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto pb-14 sm:pb-20">
           <span
             className="text-white/80 tracking-[0.18em] text-[11px] uppercase"
@@ -190,7 +217,7 @@ export const OurStoryPage = () => {
         </div>
       </section>
 
-      {/* ── PROOF STRIP — anchors the story immediately after hero ── */}
+      {/* ── PROOF STRIP ── */}
       <div className="bg-[var(--sb-blue)] py-8 sm:py-11">
         <div className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-3 gap-4 text-center">
@@ -211,15 +238,17 @@ export const OurStoryPage = () => {
       {/* ── 01 — OUR MISSION ── */}
       <Split
         eyebrow="01 — Our Mission"
-        title={
-          <>
-            Most people don't brush{" "}
-            <span className="italic text-[var(--sb-blue)]">perfectly.</span>
-          </>
-        }
+        title={<>Most people don't brush <span className="italic text-[var(--sb-blue)]">perfectly.</span></>}
         image={assets.story.mission}
-        alt="Woman holding Sonic Brush U-shaped device, smiling in home setting"
+        alt="Woman holding Sonic Brush U-shaped device, smiling"
         tone="white"
+        badge={
+          <FloatCard
+            icon={<CheckCircle2 size={14} />}
+            label="Brushing cycle complete"
+            sub="30 seconds · All teeth covered"
+          />
+        }
       >
         <div id="mission" />
         <P>
@@ -238,15 +267,10 @@ export const OurStoryPage = () => {
         </blockquote>
       </Split>
 
-      {/* ── 02 — A NEW WAY TO BRUSH (flipped, wash) ── */}
+      {/* ── 02 — A NEW WAY TO BRUSH ── */}
       <Split
         eyebrow="02 — A New Way to Brush"
-        title={
-          <>
-            So we built{" "}
-            <span className="italic text-[var(--sb-blue)]">something better.</span>
-          </>
-        }
+        title={<>So we built <span className="italic text-[var(--sb-blue)]">something better.</span></>}
         image={assets.story.newWay}
         alt="Woman using Sonic Brush in dark blue studio"
         flip
@@ -269,15 +293,17 @@ export const OurStoryPage = () => {
       {/* ── 03 — BUILT FOR MODERN LIFE ── */}
       <Split
         eyebrow="03 — Built for Modern Life"
-        title={
-          <>
-            Time{" "}
-            <span className="italic text-[var(--sb-blue)]">matters.</span>
-          </>
-        }
+        title={<>Time <span className="italic text-[var(--sb-blue)]">matters.</span></>}
         image={assets.story.modernLife}
         alt="Woman using Sonic Brush against blue background"
         tone="white"
+        badge={
+          <FloatCard
+            icon={<CheckCircle2 size={14} />}
+            label="24+ hours saved per year"
+            sub="vs. traditional brushing"
+          />
+        }
       >
         <P>
           Two minutes of brushing twice a day — over a year, that's more than
@@ -287,37 +313,31 @@ export const OurStoryPage = () => {
         </P>
         <div className="grid grid-cols-2 gap-5 max-w-xs pt-2">
           <div>
-            <div className="font-serif-display text-[36px] text-[var(--sb-blue)] leading-none">
-              24h+
-            </div>
-            <div className="mt-2 text-[11px] uppercase tracking-[0.1em] text-[var(--sb-ink-muted)]">
-              Saved per year
-            </div>
+            <div className="font-serif-display text-[36px] text-[var(--sb-blue)] leading-none">24h+</div>
+            <div className="mt-2 text-[11px] uppercase tracking-[0.1em] text-[var(--sb-ink-muted)]">Saved per year</div>
           </div>
           <div>
-            <div className="font-serif-display text-[36px] text-[var(--sb-blue)] leading-none">
-              30s
-            </div>
-            <div className="mt-2 text-[11px] uppercase tracking-[0.1em] text-[var(--sb-ink-muted)]">
-              Full clean cycle
-            </div>
+            <div className="font-serif-display text-[36px] text-[var(--sb-blue)] leading-none">30s</div>
+            <div className="mt-2 text-[11px] uppercase tracking-[0.1em] text-[var(--sb-ink-muted)]">Full clean cycle</div>
           </div>
         </div>
       </Split>
 
-      {/* ── 04 — DESIGNED TO BE ACCESSIBLE (flipped, wash) ── */}
+      {/* ── 04 — DESIGNED TO BE ACCESSIBLE ── */}
       <Split
         eyebrow="04 — Designed to Be Accessible"
-        title={
-          <>
-            Oral care,{" "}
-            <span className="italic text-[var(--sb-blue)]">for everyone.</span>
-          </>
-        }
+        title={<>Oral care, <span className="italic text-[var(--sb-blue)]">for everyone.</span></>}
         image={assets.story.accessible}
-        alt="Woman using Sonic Brush U-shaped toothbrush, clean white background"
+        alt="Woman using Sonic Brush, clean white background"
         flip
         tone="wash"
+        badge={
+          <FloatCard
+            icon={<CheckCircle2 size={14} />}
+            label="Designed for all ages"
+            sub="Sensory-friendly & easy to use"
+          />
+        }
       >
         <P>
           Sonic Brush® was designed to make brushing easier for everyone —
@@ -327,13 +347,8 @@ export const OurStoryPage = () => {
         <ul className="space-y-2.5 pt-1">
           {supportGroups.map((group) => (
             <li key={group} className="flex items-start gap-3">
-              <CheckCircle2
-                size={16}
-                className="text-[var(--sb-blue)] mt-[3px] flex-shrink-0"
-              />
-              <span className="text-[15px] sm:text-[16px] leading-[1.65] text-[var(--sb-ink)]">
-                {group}
-              </span>
+              <CheckCircle2 size={16} className="text-[var(--sb-blue)] mt-[3px] flex-shrink-0" />
+              <span className="text-[15px] sm:text-[16px] leading-[1.65] text-[var(--sb-ink)]">{group}</span>
             </li>
           ))}
         </ul>
@@ -343,7 +358,7 @@ export const OurStoryPage = () => {
         </P>
       </Split>
 
-      {/* ── FULL-BLEED VISUAL BREAK ── breaks the split rhythm mid-page ── */}
+      {/* ── FULL-BLEED VISUAL BREAK ── */}
       <section className="relative h-[45vh] min-h-[280px] max-h-[480px] overflow-hidden">
         <img
           ref={fullBleedRef}
@@ -363,15 +378,17 @@ export const OurStoryPage = () => {
       {/* ── 05 — CONTINUOUS INNOVATION ── */}
       <Split
         eyebrow="05 — Continuous Innovation"
-        title={
-          <>
-            An evolving{" "}
-            <span className="italic text-[var(--sb-blue)]">technology.</span>
-          </>
-        }
+        title={<>An evolving <span className="italic text-[var(--sb-blue)]">technology.</span></>}
         image={assets.story.innovation}
         alt="Woman holding glowing Sonic Brush in dark blue studio"
         tone="white"
+        badge={
+          <FloatCard
+            icon={<CheckCircle2 size={14} />}
+            label="Continuously refined"
+            sub="Research-driven engineering"
+          />
+        }
       >
         <P>
           We see Sonic Brush® as an evolving technology, not a static product.
@@ -380,24 +397,25 @@ export const OurStoryPage = () => {
           optimised for comfort, performance, and long-term reliability.
         </P>
         <p className="text-[16px] sm:text-[17px] leading-[1.8] font-medium text-[var(--sb-ink)]">
-          Our goal: to elevate your oral care through intelligent,
-          user-centred design.
+          Our goal: to elevate your oral care through intelligent, user-centred design.
         </p>
       </Split>
 
-      {/* ── 06 — HEALTH, CONFIDENCE & DAILY HABITS (flipped, wash) ── */}
+      {/* ── 06 — HEALTH, CONFIDENCE & DAILY HABITS ── */}
       <Split
         eyebrow="06 — Health, Confidence & Daily Habits"
-        title={
-          <>
-            Small daily habits create{" "}
-            <span className="italic text-[var(--sb-blue)]">lasting impact.</span>
-          </>
-        }
+        title={<>Small daily habits create <span className="italic text-[var(--sb-blue)]">lasting impact.</span></>}
         image={assets.story.habits}
         alt="Woman using Sonic Brush outdoors in natural warm light"
         flip
         tone="wash"
+        badge={
+          <FloatCard
+            icon={<CheckCircle2 size={14} />}
+            label="Daily habit formed"
+            sub="Simple, consistent, automatic"
+          />
+        }
       >
         <P>
           Oral care is a daily habit — and habits shape long-term outcomes.
@@ -412,12 +430,10 @@ export const OurStoryPage = () => {
         </P>
       </Split>
 
-      {/* ── 07 — OUR COMMITMENT (deep-blue centered) ── */}
+      {/* ── 07 — OUR COMMITMENT ── */}
       <section className="bg-[var(--sb-blue-deep)] py-16 sm:py-24">
         <div className="max-w-[860px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
-          <span className="text-white/60 text-[11px] uppercase tracking-[0.18em]">
-            07 — Our Commitment
-          </span>
+          <span className="text-white/60 text-[11px] uppercase tracking-[0.18em]">07 — Our Commitment</span>
           <h2 className="mt-5 font-serif-display text-[26px] sm:text-[34px] lg:text-[44px] leading-[1.2] text-white">
             Trust is built through consistent quality,
             transparency, and continuous improvement.
@@ -437,9 +453,7 @@ export const OurStoryPage = () => {
           <span className="eyebrow">08 — The Future of Brushing</span>
           <h2 className="section-title mt-4">
             Welcome to the{" "}
-            <span className="italic text-[var(--sb-blue)]">
-              future of brushing.
-            </span>
+            <span className="italic text-[var(--sb-blue)]">future of brushing.</span>
           </h2>
           <P className="mt-7 max-w-2xl mx-auto">
             We believe the future of oral care lies in intelligent automation,
