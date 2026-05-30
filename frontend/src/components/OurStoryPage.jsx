@@ -188,7 +188,7 @@ export const OurStoryPage = () => {
             ref={heroImgRef}
             src={assets.heroDesktop}
             alt="Woman using Sonic Brush U-shaped toothbrush"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover object-left-top"
             style={{ transform: "scale(1.12)", willChange: "transform" }}
           />
         </picture>
