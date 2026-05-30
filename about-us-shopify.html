@@ -404,13 +404,6 @@
 
     <!-- ── HERO SECTION ── -->
     <section class="relative bg-white border-b border-sb-line/35 py-8 lg:py-0 overflow-hidden flex items-center min-h-[500px] lg:h-[75vh]">
-      <!-- Sweeping Blue Gradient Wave Backdrop -->
-      <div class="absolute bottom-0 right-0 w-full lg:w-[50%] h-[50%] lg:h-full z-0 overflow-hidden pointer-events-none select-none">
-        <!-- Light Blue Backdrop Shape (peeking out) -->
-        <div class="absolute bottom-0 right-0 w-[85%] h-[90%] bg-sb-blue rounded-t-[80px] lg:rounded-t-none lg:rounded-tl-[320px] opacity-90"></div>
-        <!-- Dark Blue Backdrop Shape (on top) -->
-        <div class="absolute bottom-0 left-0 w-[85%] h-full bg-gradient-to-t from-sb-blue-deep via-sb-blue-deep to-sb-blue rounded-t-[100px] lg:rounded-t-none lg:rounded-tl-[320px]"></div>
-      </div>
 
       <div class="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 w-full">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -445,25 +438,22 @@
             </div>
           </div>
           
-          <!-- Right Column: Visual Stacks (Sweeping Wave & Leaf Shape Crop) -->
+          <!-- Right Column: Visual Stacks (Floating Transparent Product Image) -->
           <div class="relative p-4 reveal-item reveal-delay-100 w-full flex justify-center items-center min-h-[420px] lg:h-[65vh] select-none">
             
-            <!-- Parallax Wrapper Div (translates the whole leaf frame) -->
-            <div id="hero-parallax-wrapper" class="relative z-10 flex items-center justify-center" style="will-change: transform;">
-              <!-- Leaf Shape Frame Container -->
-              <div class="relative w-[280px] h-[320px] sm:w-[340px] sm:h-[390px] lg:w-[400px] lg:h-[460px] flex items-center justify-center">
-                <!-- Offset outline frame backing -->
-                <div class="absolute -inset-3 border-2 border-white/60 rounded-tl-[140px] sm:rounded-tl-[170px] lg:rounded-tl-[200px] rounded-br-[140px] sm:rounded-br-[170px] lg:rounded-br-[200px] rounded-tr-[8px] rounded-bl-[8px] -z-10"></div>
-                
-                <!-- Main Image Container -->
-                <div class="w-full h-full border-[8px] sm:border-[10px] border-white shadow-2xl rounded-tl-[140px] sm:rounded-tl-[170px] lg:rounded-tl-[200px] rounded-br-[140px] sm:rounded-br-[170px] lg:rounded-br-[200px] rounded-tr-[8px] rounded-bl-[8px] bg-sb-blue-deep overflow-hidden">
-                  <img
-                    src="assets/story/hero-01.png"
-                    alt="Woman using Sonic Brush U-shaped toothbrush"
-                    class="w-full h-full object-cover object-[75%_40%] transition-transform duration-700 ease-out hover:scale-105"
-                    fetchpriority="high"
-                  />
-                </div>
+            <!-- Soft Blue Ambient Background Glow -->
+            <div class="absolute w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] bg-sb-blue/10 rounded-full filter blur-[60px] opacity-80 -z-10 animate-ambient-pulse" style="animation-duration: 8s;"></div>
+            
+            <!-- Parallax Wrapper Div -->
+            <div id="hero-parallax-wrapper" class="relative z-10 flex items-center justify-center animate-float" style="will-change: transform; animation-duration: 6s;">
+              <!-- Product Image Container -->
+              <div class="relative w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] lg:w-[420px] lg:h-[420px] flex items-center justify-center">
+                <img
+                  src="assets/story/product-white.jpg"
+                  alt="Sonic Brush U-shaped automatic toothbrush"
+                  class="w-full h-full object-contain filter drop-shadow-[0_20px_50px_rgba(3,68,164,0.15)] transition-transform duration-700 ease-out hover:scale-105"
+                  fetchpriority="high"
+                />
               </div>
             </div>
             
@@ -477,10 +467,10 @@
             </div>
           </div>
         </div>
-          
 
       </div>
     </section>
+
 
 
 
