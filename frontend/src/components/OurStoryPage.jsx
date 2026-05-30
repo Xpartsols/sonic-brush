@@ -1,4 +1,6 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+// All images sourced from client-approved folder:
+// "Sonic Brush - Video & Images Assets - 2025 2"
 import assets from "@/lib/assets";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -89,7 +91,7 @@ export const OurStoryPage = () => {
       <section className="relative h-[78vh] min-h-[540px] max-h-[820px] flex items-center justify-center overflow-hidden">
         <img
           src={assets.hero}
-          alt="Sonic Brush — the U-shaped automatic toothbrush"
+          alt="Woman holding glowing Sonic Brush U-shaped toothbrush in studio"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
         {/* lighter gradient so the lifestyle shot breathes */}
@@ -123,8 +125,8 @@ export const OurStoryPage = () => {
           </>
         }
         image={assets.story.mission}
-        alt="Woman holding Sonic Brush, smiling"
-        aspect="aspect-[4/3]"
+        alt="Woman holding Sonic Brush U-shaped device, smiling in home setting"
+        aspect="aspect-square"
         tone="white"
       >
         <div id="mission" />
@@ -154,7 +156,7 @@ export const OurStoryPage = () => {
           </>
         }
         image={assets.story.newWay}
-        alt="Model examining the Sonic Brush U-shaped mouthpiece"
+        alt="Woman using Sonic Brush U-shaped toothbrush, clean white background"
         aspect="aspect-[4/5]"
         flip
         tone="wash"
@@ -183,8 +185,8 @@ export const OurStoryPage = () => {
           </>
         }
         image={assets.story.modernLife}
-        alt="Model holding the white Sonic Brush against a clean background"
-        aspect="aspect-[4/3]"
+        alt="Woman using Sonic Brush in bright natural daylight"
+        aspect="aspect-[16/9]"
         tone="white"
       >
         <P>
@@ -223,8 +225,8 @@ export const OurStoryPage = () => {
           </>
         }
         image={assets.story.accessible}
-        alt="Lifestyle shot — person using Sonic Brush in everyday setting"
-        aspect="aspect-[4/3]"
+        alt="Woman using Sonic Brush U-shaped toothbrush, clean white background"
+        aspect="aspect-square"
         flip
         tone="wash"
       >
@@ -262,8 +264,8 @@ export const OurStoryPage = () => {
           </>
         }
         image={assets.story.innovation}
-        alt="Black Sonic Brush device against a clean background"
-        aspect="aspect-[4/3]"
+        alt="Sonic Brush black U-shaped toothbrush, clean product shot"
+        aspect="aspect-square"
         tone="white"
       >
         <P>
@@ -278,44 +280,6 @@ export const OurStoryPage = () => {
         </p>
       </Split>
 
-      {/* ── COLOR SHOWCASE ── */}
-      <section className="bg-[var(--sb-blue-wash)] py-20 sm:py-28">
-        <div className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="text-center mb-12">
-            <span className="eyebrow">Available in Four Colours</span>
-            <h2 className="section-title mt-4">
-              Find your{" "}
-              <span className="italic text-[var(--sb-blue)]">perfect match.</span>
-            </h2>
-          </div>
-          {/* full-bleed colorways banner */}
-          <div className="overflow-hidden mb-10">
-            <img
-              src={assets.colorways}
-              alt="Sonic Brush available in White, Blue, Pink, and Black"
-              className="w-full object-cover max-h-[420px]"
-            />
-          </div>
-          {/* four cutouts */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 sm:gap-8">
-            {assets.cutouts.map(({ name, src }) => (
-              <div key={name} className="flex flex-col items-center gap-4">
-                <div className="w-full aspect-square bg-white flex items-center justify-center p-6">
-                  <img
-                    src={src}
-                    alt={`Sonic Brush in ${name}`}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <span className="text-[12px] uppercase tracking-[0.12em] text-[var(--sb-ink-muted)]">
-                  {name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── 06 — HEALTH, CONFIDENCE & DAILY HABITS (flipped, wash) ── */}
       <Split
         eyebrow="06 — Health, Confidence & Daily Habits"
@@ -326,8 +290,8 @@ export const OurStoryPage = () => {
           </>
         }
         image={assets.story.habits}
-        alt="Model with Sonic Brush device, looking down at it"
-        aspect="aspect-[4/3]"
+        alt="Woman using Sonic Brush outdoors in natural warm light"
+        aspect="aspect-square"
         flip
         tone="white"
       >

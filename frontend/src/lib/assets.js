@@ -1,6 +1,8 @@
-// Sonic Brush brand assets — verified CURRENT product only (U-shaped mouthpiece
-// + diamond-lattice heart base). Every file below was visually re-confirmed; the
-// OLD flat-stick product must never appear. Served from /public/assets/story.
+// Sonic Brush brand assets — ALL from client-approved folder:
+// "Sonic Brush - Video & Images Assets - 2025 2"
+// Every file below visually re-confirmed as CURRENT product
+// (U-shaped mouthpiece + diamond-lattice heart base).
+// The OLD flat-stick product must never appear.
 
 export const assets = {
   logo: {
@@ -9,28 +11,31 @@ export const assets = {
     white: "/assets/logo/sonicbrush-white-logo.png",
   },
 
-  // Full-screen hero (2528×1684, landscape)
+  // Hero — SB1.png (2528×1684 landscape)
+  // Woman holding glowing U-brush, dark blue studio background
   hero: "/assets/story/hero-01.png",
 
-  // Lifestyle / model-in-context shots (current product)
+  // Split section images — all from "For About Us page" subfolder
+  // or Model + Packaging Design Images (same approved folder)
   story: {
-    mission: "/assets/story/split-13-lifestyle.png",     // model holding U-brush, smiling
-    newWay: "/assets/story/split-12-lifestyle.png",       // model examining U-brush
-    modernLife: "/assets/story/split-02-model.png",       // model holding white U-brush
-    accessible: "/assets/story/split-05-lifestyle.png",   // model, square lifestyle
-    innovation: "/assets/story/split-07-black-device.png",// black U-brush, clean product
-    habits: "/assets/story/split-14-lifestyle.png",       // model + base, looking down
-    commitment: "/assets/story/commitment-01.png",        // vertical close portrait, black U-brush
-  },
+    // 11 (4).png — 1200×1200 — woman holding U-brush, warm casual home, smiling
+    mission: "/assets/story/lifestyle-01-smiling.png",
 
-  // Color showcase
-  colorways: "/assets/story/feature-colorways.jpg",
-  cutouts: [
-    { name: "White", src: "/assets/story/cutout-white.png" },
-    { name: "Blue", src: "/assets/story/cutout-blue.png" },
-    { name: "Pink", src: "/assets/story/cutout-pink.png" },
-    { name: "Black", src: "/assets/story/cutout-black.png" },
-  ],
+    // 2.png — 960×1200 portrait — woman U-brush in mouth, clean white bg, daylight
+    newWay: "/assets/story/lifestyle-02-inuse-portrait.png",
+
+    // 124 (6).png — 1200×628 landscape — woman U-brush in mouth, bright daylight
+    modernLife: "/assets/story/lifestyle-03-inuse-daylight.png",
+
+    // 11 (1).png — 1200×1200 — woman U-brush in mouth, clean bright white bg
+    accessible: "/assets/story/lifestyle-04-inuse-clean.png",
+
+    // Black-toothbrush.jpg — 2048×2048 — black U-brush clean product shot
+    innovation: "/assets/story/product-black.jpg",
+
+    // 11 (6).png — 1200×1200 — woman U-brush in mouth, outdoor warm light
+    habits: "/assets/story/lifestyle-05-outdoor.png",
+  },
 };
 
 export default assets;
