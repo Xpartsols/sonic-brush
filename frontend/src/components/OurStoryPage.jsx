@@ -88,16 +88,21 @@ export const OurStoryPage = () => {
     <div>
 
       {/* ── HERO ── */}
-      <section className="relative h-[78vh] min-h-[540px] max-h-[820px] flex items-center justify-center overflow-hidden">
-        <img
-          src={assets.hero}
-          alt="Woman holding glowing Sonic Brush U-shaped toothbrush in studio"
-          className="absolute inset-0 w-full h-full object-cover object-center"
-        />
-        {/* lighter gradient so the lifestyle shot breathes */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--sb-blue-deep)]/75 via-[var(--sb-blue-deep)]/20 to-transparent" />
-        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-          <span className="text-white/75 tracking-[0.18em] text-[11px] uppercase">
+      <section className="relative h-[78vh] min-h-[540px] max-h-[820px] flex items-end justify-center overflow-hidden">
+        {/* Responsive image — landscape on desktop, portrait on mobile */}
+        <picture className="absolute inset-0 w-full h-full">
+          <source media="(max-width: 767px)" srcSet={assets.heroMobile} />
+          <img
+            src={assets.heroDesktop}
+            alt="Woman using Sonic Brush U-shaped toothbrush"
+            className="w-full h-full object-cover object-top"
+          />
+        </picture>
+        {/* Gradient from bottom — pulls text out of the bright image */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--sb-blue-deep)]/90 via-[var(--sb-blue-deep)]/30 to-transparent" />
+        {/* Text anchored to bottom of hero */}
+        <div className="relative z-10 text-center px-6 max-w-3xl mx-auto pb-14 sm:pb-20">
+          <span className="text-white/70 tracking-[0.18em] text-[11px] uppercase">
             Our Story
           </span>
           <h1 className="mt-5 font-serif-display text-[28px] sm:text-[40px] lg:text-[54px] leading-[1.12] text-white">
@@ -156,7 +161,7 @@ export const OurStoryPage = () => {
           </>
         }
         image={assets.story.newWay}
-        alt="Woman using Sonic Brush U-shaped toothbrush, clean white background"
+        alt="Woman using Sonic Brush in dark blue studio setting"
         aspect="aspect-[4/5]"
         flip
         tone="wash"
@@ -185,8 +190,8 @@ export const OurStoryPage = () => {
           </>
         }
         image={assets.story.modernLife}
-        alt="Woman using Sonic Brush in bright natural daylight"
-        aspect="aspect-[16/9]"
+        alt="Woman using Sonic Brush against blue background"
+        aspect="aspect-square"
         tone="white"
       >
         <P>
