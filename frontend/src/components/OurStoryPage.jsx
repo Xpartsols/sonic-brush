@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, ShieldCheck, Eye, Repeat } from "lucide-react";
 // All images sourced from client-approved folder:
 // "Sonic Brush - Video & Images Assets - 2025 2"
 import assets from "@/lib/assets";
@@ -447,33 +447,95 @@ export const OurStoryPage = () => {
       </Split>
 
       {/* ── 07 — OUR COMMITMENT ── */}
-      {/* Redesign: left-aligned with large decorative quote mark */}
-      <section className="bg-[var(--sb-blue-deep)] py-16 sm:py-24 overflow-hidden">
-        <div className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="max-w-[780px]">
-            {/* Large decorative opening quote */}
-            <div
-              className="font-serif-display text-[120px] sm:text-[160px] leading-none text-[var(--sb-blue)]/40 select-none -mb-6 sm:-mb-8"
-              aria-hidden="true"
-            >
-              "
-            </div>
-            <span className="text-white/50 text-[11px] uppercase tracking-[0.18em]">
+      {/* Redesign: editorial three-pillar layout with centered intro + signature footer */}
+      <section className="relative bg-[var(--sb-blue-deep)] py-20 sm:py-28 lg:py-32 overflow-hidden">
+        {/* Subtle decorative accents */}
+        <div className="absolute top-0 left-0 w-[22%] h-[18%] bg-[var(--sb-blue)]/15 pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[18%] h-[22%] bg-[var(--sb-blue-soft)]/10 pointer-events-none" />
+
+        <div className="relative z-10 max-w-[1180px] mx-auto px-5 sm:px-8 lg:px-12">
+
+          {/* ── Editorial intro — centered ── */}
+          <div className="max-w-[780px] mx-auto text-center">
+            {/* Top hairline + eyebrow */}
+            <div className="inline-flex items-center gap-3 text-[var(--sb-blue-soft)]/70 text-[11px] uppercase tracking-[0.22em]">
+              <span className="w-8 h-px bg-[var(--sb-blue-soft)]/40" />
               Our Commitment
-            </span>
-            <h2 className="mt-4 font-serif-display text-[26px] sm:text-[36px] lg:text-[48px] leading-[1.15] text-white">
-              Trust is built through consistent quality,
-              transparency, and continuous improvement.
+              <span className="w-8 h-px bg-[var(--sb-blue-soft)]/40" />
+            </div>
+
+            <h2 className="mt-6 font-serif-display text-[28px] sm:text-[40px] lg:text-[52px] leading-[1.1] text-white">
+              A promise built on{" "}
+              <span className="italic text-[var(--sb-blue-soft)]">three pillars.</span>
             </h2>
-            <p className="mt-6 text-[16px] sm:text-[17px] leading-[1.8] text-white/70 max-w-[600px]">
+
+            <p className="mt-6 text-[15px] sm:text-[17px] leading-[1.8] text-white/65 max-w-[620px] mx-auto">
               At Sonic Brush®, we listen to our customers and refine our products
-              based on real-world feedback. We are committed to delivering
-              products that reflect modern expectations — building a brand you can
-              trust for smarter, more consistent oral care, every single day.
+              based on real-world feedback — delivering oral care that reflects
+              modern expectations, every single day.
             </p>
-            {/* Divider rule */}
-            <div className="mt-10 w-16 h-[2px] bg-[var(--sb-blue-soft)]/40" />
           </div>
+
+          {/* ── Three pillars ── */}
+          <div className="mt-16 sm:mt-20 grid sm:grid-cols-3 gap-px bg-white/10">
+            {[
+              {
+                icon: ShieldCheck,
+                label: "Consistent Quality",
+                desc: "Every unit engineered to the same standard — calibrated, tested, and built to last.",
+              },
+              {
+                icon: Eye,
+                label: "Radical Transparency",
+                desc: "Honest claims, clear materials, and open communication. No marketing smoke.",
+              },
+              {
+                icon: Repeat,
+                label: "Continuous Improvement",
+                desc: "Real customer feedback drives every iteration — the brush you buy tomorrow is better than today.",
+              },
+            ].map(({ icon: Icon, label, desc }, i) => (
+              <div
+                key={label}
+                className="group relative bg-[var(--sb-blue-deep)] p-8 sm:p-10 lg:p-12 transition-colors duration-300 hover:bg-[var(--sb-blue)]/10"
+              >
+                {/* Number marker */}
+                <div className="font-serif-display text-[13px] tracking-[0.2em] text-[var(--sb-blue-soft)]/50">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+
+                {/* Icon */}
+                <div className="mt-5 inline-flex items-center justify-center w-12 h-12 border border-[var(--sb-blue-soft)]/30 text-[var(--sb-blue-soft)] group-hover:border-[var(--sb-blue-soft)] group-hover:text-white transition-colors duration-300">
+                  <Icon size={20} strokeWidth={1.5} />
+                </div>
+
+                {/* Label */}
+                <h3 className="mt-6 font-serif-display text-[22px] sm:text-[24px] leading-tight text-white">
+                  {label}
+                </h3>
+
+                {/* Description */}
+                <p className="mt-3 text-[14px] sm:text-[15px] leading-[1.7] text-white/55">
+                  {desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* ── Signature footer ── */}
+          <div className="mt-16 sm:mt-20 flex flex-col items-center text-center">
+            <p className="font-serif-display italic text-[18px] sm:text-[22px] lg:text-[26px] leading-[1.4] text-white max-w-[640px]">
+              "A brand you can trust for smarter, more consistent oral care."
+            </p>
+            <div className="mt-8 flex items-center gap-5">
+              <div className="w-12 h-px bg-white/25" />
+              <span className="text-white/45 text-[11px] uppercase tracking-[0.22em]">
+                The Sonic Brush® Promise
+              </span>
+              <div className="w-12 h-px bg-white/25" />
+            </div>
+          </div>
+
         </div>
       </section>
 
