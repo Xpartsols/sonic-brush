@@ -17,11 +17,33 @@ const P = ({ children, className = "" }) => (
  * Inspired by the Yousign "You have sent a signature request" card style.
  */
 const FloatCard = ({ icon, label, sub }) => (
-  <div className="inline-flex items-start gap-3 bg-white shadow-[0_8px_40px_rgba(3,68,164,0.18)] px-4 py-3.5 max-w-[240px]">
-    <span className="text-[var(--sb-blue)] mt-0.5 flex-shrink-0">{icon}</span>
-    <div>
-      <p className="text-[13px] font-[600] text-[var(--sb-ink)] leading-tight">{label}</p>
-      {sub && <p className="mt-0.5 text-[11px] text-[var(--sb-ink-muted)]">{sub}</p>}
+  <div
+    className="relative inline-flex bg-white/95 backdrop-blur-md
+               shadow-[0_24px_60px_-18px_rgba(3,68,164,0.45)]
+               ring-1 ring-[var(--sb-ink)]/[0.06] max-w-[264px]"
+  >
+    {/* Architectural left accent bar */}
+    <div className="w-[3px] bg-[var(--sb-blue)] flex-shrink-0" aria-hidden="true" />
+
+    <div className="flex-1 px-5 py-4">
+      {/* Icon, sits above as a precise mark */}
+      <span className="inline-flex text-[var(--sb-blue)] mb-2.5">{icon}</span>
+
+      {/* Main label */}
+      <p className="text-[14px] font-[600] text-[var(--sb-ink)] leading-[1.3] tracking-[-0.005em]">
+        {label}
+      </p>
+
+      {sub && (
+        <>
+          {/* Hairline divider — architectural detail */}
+          <div className="mt-3 w-6 h-px bg-[var(--sb-blue)]/50" />
+          {/* Caption — uppercase, tracked, editorial */}
+          <p className="mt-2 text-[9.5px] uppercase tracking-[0.22em] text-[var(--sb-ink-muted)] font-[500]">
+            {sub}
+          </p>
+        </>
+      )}
     </div>
   </div>
 );
