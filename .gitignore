@@ -12,3 +12,4 @@ assets/videos/
 # Agent caches
 .claude/
 .emergent/
+.vercel

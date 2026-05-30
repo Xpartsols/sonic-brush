@@ -1,0 +1,6 @@
+# Exclude large videos from Vercel deployment to stay under 100MB file limit
+assets/videos/
+.git
+.idea
+.claude
+.emergent
