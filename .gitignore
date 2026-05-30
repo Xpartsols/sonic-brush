@@ -6,8 +6,7 @@
 .DS_Store
 Thumbs.db
 
-# Large Video Assets (prevent GitHub 100MB rejection)
-assets/videos/
+
 
 # Agent caches
 .claude/
