@@ -12,36 +12,68 @@ const P = ({ children, className = "" }) => (
   </p>
 );
 
+/**
+ * Split section with full-height image and abstract shape decorations.
+ *
+ * The decorations are two offset rectangles that peek out from behind the
+ * image — one large at the top corner, one small accent at the bottom corner.
+ * Colors vary by tone so wash vs white sections look distinct.
+ *
+ * flip  – image on left, text on right
+ * tone  – "white" | "wash"
+ */
 const Split = ({
   eyebrow,
   title,
   image,
   alt,
-  aspect = "aspect-[4/3]",
   flip = false,
   tone = "white",
   children,
 }) => {
-  const bg = tone === "wash" ? "bg-[var(--sb-blue-wash)]" : "bg-white";
+  const bg      = tone === "wash" ? "bg-[var(--sb-blue-wash)]" : "bg-white";
+  // Shape colours vary by tone for visual contrast
+  const shape1  = tone === "wash" ? "bg-white/70"              : "bg-[var(--sb-blue-soft)]";
+  const shape2  = tone === "wash" ? "bg-[var(--sb-blue)]/25"   : "bg-[var(--sb-blue-deep)]/15";
+
+  // Padding on the image wrapper creates visible space for shapes to peek through
+  const padClass = flip ? "pt-8 pl-8 sm:pt-12 sm:pl-12" : "pt-8 pr-8 sm:pt-12 sm:pr-12";
 
   const imgEl = (
-    <div className={`${aspect} overflow-hidden`}>
-      <img src={image} alt={alt} className="w-full h-full object-cover" />
+    <div className={`relative h-full ${padClass}`}>
+      {/* Large abstract rect — peeks from the top outer corner */}
+      <div
+        className={`absolute top-0 ${flip ? "left-0" : "right-0"} w-[72%] h-[65%] ${shape1}`}
+      />
+      {/* Small accent rect — opposite bottom corner */}
+      <div
+        className={`absolute bottom-0 ${flip ? "right-0" : "left-0"} w-[32%] h-[28%] ${shape2}`}
+      />
+      {/* Image — sits above shapes, fills the padded area */}
+      <div className="relative z-10 overflow-hidden min-h-[360px] sm:min-h-[500px] lg:h-full">
+        <img
+          src={image}
+          alt={alt}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </div>
     </div>
   );
 
   const textEl = (
-    <div>
-      <span className="eyebrow">{eyebrow}</span>
-      <h2 className="section-title mt-4">{title}</h2>
-      <div className="mt-6 space-y-4">{children}</div>
+    <div className="flex items-center py-4 lg:py-8">
+      <div className="w-full">
+        <span className="eyebrow">{eyebrow}</span>
+        <h2 className="section-title mt-4">{title}</h2>
+        <div className="mt-6 space-y-4">{children}</div>
+      </div>
     </div>
   );
 
   return (
-    <section className={`${bg} py-12 sm:py-20`}>
+    <section className={`${bg} py-12 sm:py-16`}>
       <div className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
           {flip ? (
             <>
               <div className="order-2 lg:order-1">{imgEl}</div>
@@ -187,7 +219,6 @@ export const OurStoryPage = () => {
         }
         image={assets.story.mission}
         alt="Woman holding Sonic Brush U-shaped device, smiling in home setting"
-        aspect="aspect-square"
         tone="white"
       >
         <div id="mission" />
@@ -218,7 +249,6 @@ export const OurStoryPage = () => {
         }
         image={assets.story.newWay}
         alt="Woman using Sonic Brush in dark blue studio"
-        aspect="aspect-[4/5]"
         flip
         tone="wash"
       >
@@ -247,7 +277,6 @@ export const OurStoryPage = () => {
         }
         image={assets.story.modernLife}
         alt="Woman using Sonic Brush against blue background"
-        aspect="aspect-square"
         tone="white"
       >
         <P>
@@ -287,7 +316,6 @@ export const OurStoryPage = () => {
         }
         image={assets.story.accessible}
         alt="Woman using Sonic Brush U-shaped toothbrush, clean white background"
-        aspect="aspect-square"
         flip
         tone="wash"
       >
@@ -343,7 +371,6 @@ export const OurStoryPage = () => {
         }
         image={assets.story.innovation}
         alt="Woman holding glowing Sonic Brush in dark blue studio"
-        aspect="aspect-square"
         tone="white"
       >
         <P>
@@ -369,7 +396,6 @@ export const OurStoryPage = () => {
         }
         image={assets.story.habits}
         alt="Woman using Sonic Brush outdoors in natural warm light"
-        aspect="aspect-square"
         flip
         tone="wash"
       >
