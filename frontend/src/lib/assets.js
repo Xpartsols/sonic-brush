@@ -11,6 +11,9 @@ export const assets = {
     white: "/assets/logo/sonicbrush-white-logo.png",
   },
 
+  // Full-bleed visual break — landscape daylight in-use shot (124(6).png, 1200×628)
+  fullBleed: "/assets/story/lifestyle-03-inuse-daylight.png",
+
   // Hero — responsive: different crop for desktop vs mobile
   // Desktop: 124(6).png landscape (1200×628) — woman U-brush in mouth, bright white room
   // Mobile:  2.png portrait (960×1200)       — same shot, tighter crop for tall screens
@@ -32,8 +35,8 @@ export const assets = {
     // 11 (1).png — 1200×1200 — woman U-brush in mouth, clean bright white bg
     accessible: "/assets/story/lifestyle-04-inuse-clean.png",
 
-    // Black-toothbrush.jpg — 2048×2048 — black U-brush clean product shot
-    innovation: "/assets/story/product-black.jpg",
+    // spare-studio-hold.png (Sonic Brush 4) — 2048×2048 — woman holding glowing U-brush, dark blue studio
+    innovation: "/assets/story/spare-studio-hold.png",
 
     // 11 (6).png — 1200×1200 — woman U-brush in mouth, outdoor warm light
     habits: "/assets/story/lifestyle-05-outdoor.png",

@@ -11,19 +11,6 @@ const P = ({ children, className = "" }) => (
   </p>
 );
 
-/**
- * Reusable split-layout section.
- *
- * Props
- *   eyebrow  – small label above the heading
- *   title    – heading text (React node)
- *   image    – src string
- *   alt      – img alt
- *   aspect   – Tailwind aspect-ratio class (default "aspect-[4/3]")
- *   flip     – image on LEFT, text on RIGHT
- *   tone     – "white" | "wash"
- *   children – body content (P elements, lists, stats…)
- */
 const Split = ({
   eyebrow,
   title,
@@ -51,7 +38,7 @@ const Split = ({
   );
 
   return (
-    <section className={`${bg} py-20 sm:py-28`}>
+    <section className={`${bg} py-12 sm:py-20`}>
       <div className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
           {flip ? (
@@ -81,6 +68,12 @@ const supportGroups = [
   "People with physical or neurological challenges and limitations",
 ];
 
+const proofStats = [
+  { stat: "30s",   label: "Full clean cycle"    },
+  { stat: "360°",  label: "All teeth at once"   },
+  { stat: "0",     label: "Technique required"  },
+];
+
 // ── Page ─────────────────────────────────────────────────────────────────────
 
 export const OurStoryPage = () => {
@@ -89,7 +82,6 @@ export const OurStoryPage = () => {
 
       {/* ── HERO ── */}
       <section className="relative h-[78vh] min-h-[540px] max-h-[820px] flex items-end justify-center overflow-hidden">
-        {/* Responsive image — landscape on desktop, portrait on mobile */}
         <picture className="absolute inset-0 w-full h-full">
           <source media="(max-width: 767px)" srcSet={assets.heroMobile} />
           <img
@@ -98,9 +90,7 @@ export const OurStoryPage = () => {
             className="w-full h-full object-cover object-top"
           />
         </picture>
-        {/* Gradient from bottom — pulls text out of the bright image */}
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--sb-blue-deep)]/90 via-[var(--sb-blue-deep)]/30 to-transparent" />
-        {/* Text anchored to bottom of hero */}
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto pb-14 sm:pb-20">
           <span className="text-white/70 tracking-[0.18em] text-[11px] uppercase">
             Our Story
@@ -119,6 +109,24 @@ export const OurStoryPage = () => {
           </a>
         </div>
       </section>
+
+      {/* ── PROOF STRIP — anchors the story immediately after hero ── */}
+      <div className="bg-[var(--sb-blue)] py-8 sm:py-11">
+        <div className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-3 gap-4 text-center">
+            {proofStats.map(({ stat, label }) => (
+              <div key={label}>
+                <div className="font-serif-display text-[36px] sm:text-[52px] leading-none text-white">
+                  {stat}
+                </div>
+                <div className="mt-2 text-[10px] sm:text-[11px] uppercase tracking-[0.15em] text-white/60">
+                  {label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* ── 01 — OUR MISSION ── */}
       <Split
@@ -161,7 +169,7 @@ export const OurStoryPage = () => {
           </>
         }
         image={assets.story.newWay}
-        alt="Woman using Sonic Brush in dark blue studio setting"
+        alt="Woman using Sonic Brush in dark blue studio"
         aspect="aspect-[4/5]"
         flip
         tone="wash"
@@ -202,7 +210,7 @@ export const OurStoryPage = () => {
         </P>
         <div className="grid grid-cols-2 gap-5 max-w-xs pt-2">
           <div>
-            <div className="font-serif-display text-[32px] text-[var(--sb-blue)] leading-none">
+            <div className="font-serif-display text-[36px] text-[var(--sb-blue)] leading-none">
               24h+
             </div>
             <div className="mt-2 text-[11px] uppercase tracking-[0.1em] text-[var(--sb-ink-muted)]">
@@ -210,7 +218,7 @@ export const OurStoryPage = () => {
             </div>
           </div>
           <div>
-            <div className="font-serif-display text-[32px] text-[var(--sb-blue)] leading-none">
+            <div className="font-serif-display text-[36px] text-[var(--sb-blue)] leading-none">
               30s
             </div>
             <div className="mt-2 text-[11px] uppercase tracking-[0.1em] text-[var(--sb-ink-muted)]">
@@ -259,6 +267,21 @@ export const OurStoryPage = () => {
         </P>
       </Split>
 
+      {/* ── FULL-BLEED VISUAL BREAK ── breaks the split rhythm mid-page ── */}
+      <section className="relative h-[45vh] min-h-[280px] max-h-[480px] overflow-hidden">
+        <img
+          src={assets.fullBleed}
+          alt="Sonic Brush in use — natural daylight"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--sb-blue-deep)]/80 via-[var(--sb-blue-deep)]/40 to-transparent" />
+        <div className="relative z-10 h-full flex items-center px-5 sm:px-12 lg:px-20 max-w-[1280px] mx-auto">
+          <blockquote className="font-serif-display italic text-[22px] sm:text-[32px] lg:text-[40px] leading-[1.25] text-white max-w-lg">
+            "Smarter brushing.<br />Consistent results.<br />Every single day."
+          </blockquote>
+        </div>
+      </section>
+
       {/* ── 05 — CONTINUOUS INNOVATION ── */}
       <Split
         eyebrow="05 — Continuous Innovation"
@@ -269,7 +292,7 @@ export const OurStoryPage = () => {
           </>
         }
         image={assets.story.innovation}
-        alt="Sonic Brush black U-shaped toothbrush, clean product shot"
+        alt="Woman holding glowing Sonic Brush in dark blue studio"
         aspect="aspect-square"
         tone="white"
       >
@@ -298,7 +321,7 @@ export const OurStoryPage = () => {
         alt="Woman using Sonic Brush outdoors in natural warm light"
         aspect="aspect-square"
         flip
-        tone="white"
+        tone="wash"
       >
         <P>
           Oral care is a daily habit — and habits shape long-term outcomes.
@@ -314,7 +337,7 @@ export const OurStoryPage = () => {
       </Split>
 
       {/* ── 07 — OUR COMMITMENT (deep-blue centered) ── */}
-      <section className="bg-[var(--sb-blue-deep)] py-24 sm:py-32">
+      <section className="bg-[var(--sb-blue-deep)] py-16 sm:py-24">
         <div className="max-w-[860px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
           <span className="text-white/60 text-[11px] uppercase tracking-[0.18em]">
             07 — Our Commitment
@@ -333,7 +356,7 @@ export const OurStoryPage = () => {
       </section>
 
       {/* ── 08 — THE FUTURE OF BRUSHING ── */}
-      <section className="bg-white py-24 sm:py-32">
+      <section className="bg-white py-16 sm:py-24">
         <div className="max-w-[860px] mx-auto px-5 sm:px-8 lg:px-12 text-center">
           <span className="eyebrow">08 — The Future of Brushing</span>
           <h2 className="section-title mt-4">
