@@ -461,11 +461,11 @@ export const OurStoryPage = () => {
             <span className="eyebrow eyebrow--light">
               Our Commitment
             </span>
-            <h2 className="mt-6 section-title section-title--xl text-white">
+            <h2 className="mt-6 section-title section-title--xl section-title--light">
               Trust is built through consistent quality,
               transparency, and continuous improvement.
             </h2>
-            <p className="mt-7 section-lead text-white/75 max-w-[620px]">
+            <p className="mt-7 section-lead section-lead--light max-w-[620px]">
               At Sonic Brush®, we listen to our customers and refine our products
               based on real-world feedback. We are committed to delivering
               products that reflect modern expectations — building a brand you can
