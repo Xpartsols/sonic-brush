@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 // All images sourced from client-approved folder:
 // "Sonic Brush - Video & Images Assets - 2025 2"
@@ -77,25 +78,72 @@ const proofStats = [
 // ── Page ─────────────────────────────────────────────────────────────────────
 
 export const OurStoryPage = () => {
+  const heroImgRef     = useRef(null);
+  const fullBleedRef   = useRef(null);
+
+  // ── Parallax scroll handler (RAF-throttled for 60fps) ──────────────────────
+  useEffect(() => {
+    let ticking = false;
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+
+        // Hero — image drifts up at 30% of scroll speed
+        if (heroImgRef.current) {
+          heroImgRef.current.style.transform = `scale(1.12) translateY(${y * 0.3}px)`;
+        }
+
+        // Full-bleed break — relative parallax to section position
+        if (fullBleedRef.current) {
+          const section = fullBleedRef.current.closest("section");
+          if (section) {
+            const rect     = section.getBoundingClientRect();
+            const progress = (window.innerHeight / 2 - rect.top) / section.offsetHeight;
+            fullBleedRef.current.style.transform = `scale(1.15) translateY(${progress * 70}px)`;
+          }
+        }
+
+        ticking = false;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div>
 
       {/* ── HERO ── */}
       <section className="relative h-[78vh] min-h-[540px] max-h-[820px] flex items-end justify-center overflow-hidden">
+        {/* Parallax image — scale(1.12) gives room to drift without showing edges */}
         <picture className="absolute inset-0 w-full h-full">
           <source media="(max-width: 767px)" srcSet={assets.heroMobile} />
           <img
+            ref={heroImgRef}
             src={assets.heroDesktop}
             alt="Woman using Sonic Brush U-shaped toothbrush"
             className="w-full h-full object-cover object-top"
+            style={{ transform: "scale(1.12)", willChange: "transform" }}
           />
         </picture>
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--sb-blue-deep)]/90 via-[var(--sb-blue-deep)]/30 to-transparent" />
+        {/* Stronger gradient — covers the full image so white text is always readable */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--sb-blue-deep)]/95 via-[var(--sb-blue-deep)]/60 to-[var(--sb-blue-deep)]/20" />
+        {/* Text — text-shadow reinforces readability on any background brightness */}
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto pb-14 sm:pb-20">
-          <span className="text-white/70 tracking-[0.18em] text-[11px] uppercase">
+          <span
+            className="text-white/80 tracking-[0.18em] text-[11px] uppercase"
+            style={{ textShadow: "0 1px 12px rgba(2,45,110,0.9)" }}
+          >
             Our Story
           </span>
-          <h1 className="mt-5 font-serif-display text-[28px] sm:text-[40px] lg:text-[54px] leading-[1.12] text-white">
+          <h1
+            className="mt-5 font-serif-display text-[28px] sm:text-[40px] lg:text-[54px] leading-[1.12] text-white"
+            style={{ textShadow: "0 2px 24px rgba(2,45,110,0.8), 0 4px 48px rgba(0,0,0,0.5)" }}
+          >
             The Toothbrush Hasn't Changed{" "}
             <br className="hidden sm:block" />
             in Decades.{" "}
@@ -270,9 +318,11 @@ export const OurStoryPage = () => {
       {/* ── FULL-BLEED VISUAL BREAK ── breaks the split rhythm mid-page ── */}
       <section className="relative h-[45vh] min-h-[280px] max-h-[480px] overflow-hidden">
         <img
+          ref={fullBleedRef}
           src={assets.fullBleed}
           alt="Sonic Brush in use — natural daylight"
           className="absolute inset-0 w-full h-full object-cover object-center"
+          style={{ transform: "scale(1.15)", willChange: "transform" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[var(--sb-blue-deep)]/80 via-[var(--sb-blue-deep)]/40 to-transparent" />
         <div className="relative z-10 h-full flex items-center px-5 sm:px-12 lg:px-20 max-w-[1280px] mx-auto">
